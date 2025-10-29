@@ -1,0 +1,1059 @@
+<div class="employee-details-content">
+  <h2>Employee Details</h2>
+  <div class="employee-details-container">
+    <button id="addEmployeeBtn" class="btn-primary" style="float: right">Add Employee</button>
+    <button id="updateEmployeeBtn" style="display: none">
+      update Employee
+    </button>
+  </div>
+  
+  <!-- EMPLOYEE TABLE -->
+  <div class="employee-table-container">
+    <table class="employee-table">
+      <thead>
+        <tr>
+          <th>Employee ID</th>
+          <th>Employee Name</th>
+          <th>Designation</th>
+          <th>Job Role</th>
+          <th>Working status</th>
+          <th>Email Address (Personal)</th>
+          <th>Phone Number (Personal)</th>
+          <th>View</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      <tbody id="employeeTableBody">
+        <tr>
+          <td
+            colspan="9"
+            style="text-align: center; padding: 40px; color: #999"
+          >
+            No employees added yet. Click "Add Employee" to get started.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-------------------------------------------- Start of Employee Modal ------------------------------------------------>
+  <div id="employeeModal" class="emp-modal">
+    <div class="emp-modal-content">
+      <!-- Fixed Header -->
+      <div class="emp-modal-header">
+        <h2 id="modalTitle">Employee Details</h2>
+        <span class="emp-modal-close">&times;</span>
+      </div>
+
+      <!-- Scrollable Body -->
+      <div class="emp-modal-body">
+        <form id="employeeForm" class="emp-form">
+          <!-- Professional Information -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon"
+                ><img src="../assets/Imgaes/modal_person.webp" alt=""
+              /></span>
+              Professional Information
+            </h3>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Employee ID
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="employeeId"
+                  class="emp-input"
+                  placeholder="FST101"
+                  required
+                />
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Date of Birth
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <input type="date" name="dob" class="emp-input" required />
+              </div>
+            </div>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Employee Name
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <input
+                  type="text"
+                  name="employeeName"
+                  class="emp-input"
+                  placeholder="NEHA"
+                  required
+                />
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Gender
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <div class="emp-radio-group">
+                  <label class="emp-radio-label">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      class="emp-radio"
+                    />
+                    Male
+                  </label>
+                  <label class="emp-radio-label">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      class="emp-radio"
+                    />
+                    Female
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon"
+                ><img src="../assets/Imgaes/modal_mail.webp" alt=""
+              /></span>
+              Contact Information
+            </h3>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label">Email (Personal)</label>
+                <input
+                  type="email"
+                  name="emailPersonal"
+                  class="emp-input"
+                  placeholder="riya@gmail.com"
+                  required
+                />
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label">Email (Official)</label>
+                <input
+                  type="email"
+                  name="emailOfficial"
+                  class="emp-input"
+                  placeholder="fisto@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label">Phone (Personal)</label>
+                <input
+                  type="tel"
+                  name="phonePersonal"
+                  class="emp-input"
+                  placeholder="+91 1234567891"
+                  required
+                />
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label">Phone (Official)</label>
+                <input
+                  type="tel"
+                  name="phoneOfficial"
+                  class="emp-input"
+                  placeholder="+91 1234567891"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Employment Details -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon">
+                <img src="../assets/Imgaes/modal_emp.webp" alt="" />
+              </span>
+              Employment Details
+            </h3>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Job Role
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <div class="emp-radio-group">
+                  <label class="emp-radio-label">
+                    <input
+                      type="radio"
+                      name="employmentType"
+                      value="On Role"
+                      class="emp-radio"
+                      id="empOnRole"
+                      checked
+                    />
+                    On Role
+                  </label>
+                  <label class="emp-radio-label">
+                    <input
+                      type="radio"
+                      name="employmentType"
+                      value="Intern"
+                      class="emp-radio"
+                      id="empIntern"
+                    />
+                    Intern
+                  </label>
+                </div>
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Designation
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <select name="designation" class="emp-select" required>
+                  <option value="">Select Designation</option>
+                  <option value="Developer">Developer</option>
+                  <option value="UI/UX">UI/UX</option>
+                  <option value="2D/3D">2D/3D</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- On Role Fields -->
+            <div class="emp-form-row" id="onRoleFields">
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Working Status
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <select
+                  name="workingStatus"
+                  class="emp-select"
+                  id="workingStatusOnRole"
+                  required
+                >
+                  <option value="">Select Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="on-leave">On Leave</option>
+                </select>
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Join Date
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <input
+                  type="date"
+                  name="joinDate"
+                  class="emp-input"
+                  id="joinDateOnRole"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Intern Fields -->
+            <div id="internFields" style="display: none">
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label"
+                    >Intern Start Date
+                    <span class="employee-important-fill">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    name="internStartDate"
+                    class="emp-input"
+                    id="internStartDate"
+                  />
+                </div>
+                <div class="emp-form-group">
+                  <label class="emp-label"
+                    >Intern End Date
+                    <span class="employee-important-fill">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    name="internEndDate"
+                    class="emp-input"
+                    id="internEndDate"
+                  />
+                </div>
+              </div>
+              <div class="emp-form-row">
+                <div class="emp-form-group">
+                  <label class="emp-label">Duration (Months)</label>
+                  <input
+                    type="text"
+                    name="durationMonths"
+                    class="emp-input"
+                    id="durationMonths"
+                    readonly
+                    placeholder="Auto-calculated"
+                  />
+                </div>
+                <div class="emp-form-group">
+                  <label class="emp-label"
+                    >Working Status
+                    <span class="employee-important-fill">*</span>
+                  </label>
+                  <select
+                    name="workingStatusIntern"
+                    class="emp-select"
+                    id="workingStatusIntern"
+                  >
+                    <option value="">Select Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="on-leave">On Leave</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Information -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon"
+                ><img src="../assets/Imgaes/modal_location.webp" alt=""
+              /></span>
+              Address Information
+            </h3>
+            <div class="emp-form-group emp-full-width">
+              <label class="emp-label"
+                >Address
+                <span class="employee-important-fill">*</span>
+              </label>
+              <textarea
+                name="address"
+                rows="3"
+                class="emp-textarea"
+                placeholder="Enter complete address"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Document Upload -->
+          <!-- Document Upload -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon">
+                <img src="../assets/Imgaes/modal_doc.webp" alt="" />
+              </span>
+              Document Upload
+            </h3>
+            <div class="emp-upload-grid">
+              <!-- Employee Photo (Single File) -->
+              <div class="emp-upload-item">
+                <div class="emp-upload-head">
+                  <div class="emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_cam.webp" alt="" />
+                  </div>
+                  <label class="emp-upload-label">Employee Photo</label>
+                </div>
+                <div
+                  class="emp-preview-container"
+                  id="preview-employeePhoto"
+                ></div>
+                <input
+                  type="file"
+                  id="employeePhoto"
+                  name="employeePhoto"
+                  class="emp-file-input"
+                  accept=".jpg,.jpeg,.png"
+                />
+                <div class="emp-button-container">
+                  <button
+                    type="button"
+                    class="emp-upload-btn"
+                    onclick="document.getElementById('employeePhoto').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Resume/CV (Single File) -->
+              <div class="emp-upload-item">
+                <div class="emp-upload-head">
+                  <div class="emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_cv.webp" alt="" />
+                  </div>
+                  <label class="emp-upload-label">Resume/CV</label>
+                </div>
+                <div class="emp-preview-container" id="preview-resumeCV"></div>
+                <input
+                  type="file"
+                  id="resumeCV"
+                  name="resumeCV"
+                  class="emp-file-input"
+                  accept=".pdf,.doc,.docx"
+                />
+                <div class="emp-button-container">
+                  <button
+                    type="button"
+                    class="emp-upload-btn"
+                    onclick="document.getElementById('resumeCV').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- ID Proof (Multiple Files) -->
+              <div class="emp-upload-item">
+                <div class="emp-upload-head">
+                  <div class="emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_id.webp" alt="" />
+                  </div>
+                  <label class="emp-upload-label">ID Proof</label>
+                </div>
+                <div class="emp-preview-container" id="preview-idProof"></div>
+                <input
+                  type="file"
+                  id="idProof"
+                  name="idProof"
+                  class="emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="emp-button-container">
+                  <button
+                    type="button"
+                    class="emp-upload-btn"
+                    onclick="document.getElementById('idProof').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Certificates (Multiple Files) -->
+              <div class="emp-upload-item">
+                <div class="emp-upload-head">
+                  <div class="emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_certi.webp" alt="" />
+                  </div>
+                  <label class="emp-upload-label">Certificates</label>
+                </div>
+                <div
+                  class="emp-preview-container"
+                  id="preview-certificates"
+                ></div>
+                <input
+                  type="file"
+                  id="certificates"
+                  name="certificates"
+                  class="emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="emp-button-container">
+                  <button
+                    type="button"
+                    class="emp-upload-btn"
+                    onclick="document.getElementById('certificates').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Other Documents (Multiple Files) -->
+              <div class="emp-upload-item">
+                <div class="emp-upload-head">
+                  <div class="emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_pin.webp" alt="" />
+                  </div>
+                  <label class="emp-upload-label">Other Documents</label>
+                </div>
+                <div class="emp-preview-container" id="preview-otherDocs"></div>
+                <input
+                  type="file"
+                  id="otherDocs"
+                  name="otherDocs"
+                  class="emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="emp-button-container">
+                  <button
+                    type="button"
+                    class="emp-upload-btn"
+                    onclick="document.getElementById('otherDocs').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Account Security -->
+          <div class="emp-form-section">
+            <h3 class="emp-section-title">
+              <span class="emp-section-icon">
+                <img src="../assets/Imgaes/modal_lock.webp" alt="" />
+              </span>
+              Account Security
+            </h3>
+            <div class="emp-form-row">
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Password
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <div class="emp-password-wrapper">
+                  <input
+                    type="password"
+                    name="password"
+                    id="password"
+                    class="emp-input"
+                    placeholder="Enter Password"
+                    required
+                  />
+                  <img
+                    src="../assets/Imgaes/eye_slash_login.webp"
+                    alt="Toggle Password"
+                    class="emp-eye-icon"
+                    id="togglePassword"
+                  />
+                </div>
+              </div>
+              <div class="emp-form-group">
+                <label class="emp-label"
+                  >Confirm Password
+                  <span class="employee-important-fill">*</span>
+                </label>
+                <div class="emp-password-wrapper">
+                  <input
+                    type="password"
+                    name="confirmPassword"
+                    id="confirmPassword"
+                    class="emp-input"
+                    placeholder="Enter Same Password"
+                    required
+                  />
+                  <img
+                    src="../assets/Imgaes/eye_slash_login.webp"
+                    alt="Toggle Confirm Password"
+                    class="emp-eye-icon"
+                    id="toggleConfirmPassword"
+                  />
+                </div>
+              </div>
+            </div>
+            <div
+              id="passwordError"
+              style="
+                color: red;
+                font-size: 12px;
+                margin-top: 10px;
+                display: none;
+              "
+            >
+              Passwords do not match!
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Fixed Footer -->
+      <div class="emp-modal-footer">
+        <div class="emp-form-actions">
+          <!-- <button type="button" class="emp-btn-cancel" id="empCancelBtn">
+            Cancel
+          </button> -->
+          <button type="submit" class="emp-btn-submit" id="empSubmitBtn">
+            Register Employee
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--------------------------------------------End of Employee Modal ------------------------------------------------>
+
+  <!--------------------------------------------Start Update Employee Modal ------------------------------------------------>
+  <div id="updateEmployeeModal" class="update-emp-modal">
+    <div class="update-emp-modal-content">
+      <!-- Fixed Header -->
+      <div class="update-emp-modal-header">
+        <h2 id="updateModalTitle">Update Employee Details</h2>
+        <span class="update-emp-modal-close">&times;</span>
+      </div>
+
+      <!-- Scrollable Body -->
+      <div class="update-emp-modal-body">
+        <form id="updateEmployeeForm" class="update-emp-form">
+          <!-- Professional Information -->
+          <div class="update-emp-form-section">
+            <h3 class="update-emp-section-title">
+              <span class="update-emp-section-icon">
+                <img src="../assets/Imgaes/modal_person.webp" alt="" />
+              </span>
+              Professional Information
+            </h3>
+            <div class="update-emp-form-row">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Employee ID</label>
+                <input
+                  type="text"
+                  name="employeeId"
+                  class="update-emp-input"
+                  placeholder="FST101"
+                  required
+                />
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Date of Birth</label>
+                <input
+                  type="date"
+                  name="dob"
+                  class="update-emp-input"
+                  required
+                />
+              </div>
+            </div>
+            <div class="update-emp-form-row">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Employee Name</label>
+                <input
+                  type="text"
+                  name="employeeName"
+                  class="update-emp-input"
+                  placeholder="NEHA"
+                />
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Gender</label>
+                <div class="update-emp-radio-group">
+                  <label class="update-emp-radio-label">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="male"
+                      class="update-emp-radio"
+                    />
+                    Male
+                  </label>
+                  <label class="update-emp-radio-label">
+                    <input
+                      type="radio"
+                      name="gender"
+                      value="female"
+                      class="update-emp-radio"
+                    />
+                    Female
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Contact Information -->
+          <div class="update-emp-form-section">
+            <h3 class="update-emp-section-title">
+              <span class="update-emp-section-icon">
+                <img src="../assets/Imgaes/modal_mail.webp" alt="" />
+              </span>
+              Contact Information
+            </h3>
+            <div class="update-emp-form-row">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Email (Personal)</label>
+                <input
+                  type="email"
+                  name="emailPersonal"
+                  class="update-emp-input"
+                  placeholder="riya@gmail.com"
+                  required
+                />
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Email (Official)</label>
+                <input
+                  type="email"
+                  name="emailOfficial"
+                  class="update-emp-input"
+                  placeholder="fisto@gmail.com"
+                  required
+                />
+              </div>
+            </div>
+            <div class="update-emp-form-row">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Phone (Personal)</label>
+                <input
+                  type="tel"
+                  name="phonePersonal"
+                  class="update-emp-input"
+                  placeholder="+91 1234567891"
+                  required
+                />
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Phone (Official)</label>
+                <input
+                  type="tel"
+                  name="phoneOfficial"
+                  class="update-emp-input"
+                  placeholder="+91 1234567891"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Employment Details -->
+          <div class="update-emp-form-section">
+            <h3 class="update-emp-section-title">
+              <span class="update-emp-section-icon">
+                <img src="../assets/Imgaes/modal_emp.webp" alt="" />
+              </span>
+              Employment Details
+            </h3>
+            <div class="update-emp-form-row">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Employment Type</label>
+                <div class="update-emp-radio-group">
+                  <label class="update-emp-radio-label">
+                    <input
+                      type="radio"
+                      name="employmentType"
+                      value="On Role"
+                      class="update-emp-radio"
+                      id="updateEmpOnRole"
+                      checked
+                    />
+                    On Role
+                  </label>
+                  <label class="update-emp-radio-label">
+                    <input
+                      type="radio"
+                      name="employmentType"
+                      value="Intern"
+                      class="update-emp-radio"
+                      id="updateEmpIntern"
+                    />
+                    Intern
+                  </label>
+                </div>
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Designation</label>
+                <select name="designation" class="update-emp-select" required>
+                  <option value="">Select Designation</option>
+                  <option value="Developer">Developer</option>
+                  <option value="UI/UX">UI/UX</option>
+                  <option value="2D/3D">2D/3D</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- On Role Fields -->
+            <div class="update-emp-form-row" id="updateOnRoleFields">
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Working Status</label>
+                <select
+                  name="workingStatus"
+                  class="update-emp-select"
+                  id="updateWorkingStatusOnRole"
+                  required
+                >
+                  <option value="">Select Status</option>
+                  <option value="active">Active</option>
+                  <option value="inactive">Inactive</option>
+                  <option value="on-leave">On Leave</option>
+                </select>
+              </div>
+              <div class="update-emp-form-group">
+                <label class="update-emp-label">Join Date</label>
+                <input
+                  type="date"
+                  name="joinDate"
+                  class="update-emp-input"
+                  id="updateJoinDateOnRole"
+                  required
+                />
+              </div>
+            </div>
+
+            <!-- Intern Fields -->
+            <div id="updateInternFields" style="display: none">
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Intern Start Date</label>
+                  <input
+                    type="date"
+                    name="internStartDate"
+                    class="update-emp-input"
+                    id="updateInternStartDate"
+                  />
+                </div>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Intern End Date</label>
+                  <input
+                    type="date"
+                    name="internEndDate"
+                    class="update-emp-input"
+                    id="updateInternEndDate"
+                  />
+                </div>
+              </div>
+              <div class="update-emp-form-row">
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Duration (Months)</label>
+                  <input
+                    type="text"
+                    name="durationMonths"
+                    class="update-emp-input"
+                    id="updateDurationMonths"
+                    readonly
+                    placeholder="Auto-calculated"
+                  />
+                </div>
+                <div class="update-emp-form-group">
+                  <label class="update-emp-label">Working Status</label>
+                  <select
+                    name="workingStatusIntern"
+                    class="update-emp-select"
+                    id="updateWorkingStatusIntern"
+                  >
+                    <option value="">Select Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                    <option value="on-leave">On Leave</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Address Information -->
+          <div class="update-emp-form-section">
+            <h3 class="update-emp-section-title">
+              <span class="update-emp-section-icon">
+                <img src="../assets/Imgaes/modal_location.webp" alt="" />
+              </span>
+              Address Information
+            </h3>
+            <div class="update-emp-form-group update-emp-full-width">
+              <label class="update-emp-label">Address</label>
+              <textarea
+                name="address"
+                rows="3"
+                class="update-emp-textarea"
+                placeholder="Enter complete address"
+              ></textarea>
+            </div>
+          </div>
+
+          <!-- Document Upload -->
+          <div class="update-emp-form-section">
+            <h3 class="update-emp-section-title">
+              <span class="update-emp-section-icon">
+                <img src="../assets/Imgaes/modal_doc.webp" alt="" />
+              </span>
+              Document Upload
+            </h3>
+            <div class="update-emp-upload-grid">
+              <!-- Employee Photo (Single File) -->
+              <div class="update-emp-upload-item">
+                <div class="update-emp-upload-head">
+                  <div class="update-emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_cam.webp" alt="" />
+                  </div>
+                  <label class="update-emp-upload-label">Employee Photo</label>
+                </div>
+                <div
+                  class="update-emp-preview-container"
+                  id="update-preview-employeePhoto"
+                ></div>
+                <input
+                  type="file"
+                  id="updateEmployeePhoto"
+                  name="employeePhoto"
+                  class="update-emp-file-input"
+                  accept=".jpg,.jpeg,.png"
+                />
+                <div class="update-emp-button-container">
+                  <button
+                    type="button"
+                    class="update-emp-upload-btn"
+                    onclick="document.getElementById('updateEmployeePhoto').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Resume/CV (Single File) -->
+              <div class="update-emp-upload-item">
+                <div class="update-emp-upload-head">
+                  <div class="update-emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_cv.webp" alt="" />
+                  </div>
+                  <label class="update-emp-upload-label">Resume/CV</label>
+                </div>
+                <div
+                  class="update-emp-preview-container"
+                  id="update-preview-resumeCV"
+                ></div>
+                <input
+                  type="file"
+                  id="updateResumeCV"
+                  name="resumeCV"
+                  class="update-emp-file-input"
+                  accept=".pdf,.doc,.docx"
+                />
+                <div class="update-emp-button-container">
+                  <button
+                    type="button"
+                    class="update-emp-upload-btn"
+                    onclick="document.getElementById('updateResumeCV').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- ID Proof (Multiple Files) -->
+              <div class="update-emp-upload-item">
+                <div class="update-emp-upload-head">
+                  <div class="update-emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_id.webp" alt="" />
+                  </div>
+                  <label class="update-emp-upload-label">ID Proof</label>
+                </div>
+                <div
+                  class="update-emp-preview-container"
+                  id="update-preview-idProof"
+                ></div>
+                <input
+                  type="file"
+                  id="updateIdProof"
+                  name="idProof"
+                  class="update-emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="update-emp-button-container">
+                  <button
+                    type="button"
+                    class="update-emp-upload-btn"
+                    onclick="document.getElementById('updateIdProof').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Certificates (Multiple Files) -->
+              <div class="update-emp-upload-item">
+                <div class="update-emp-upload-head">
+                  <div class="update-emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_certi.webp" alt="" />
+                  </div>
+                  <label class="update-emp-upload-label">Certificates</label>
+                </div>
+                <div
+                  class="update-emp-preview-container"
+                  id="update-preview-certificates"
+                ></div>
+                <input
+                  type="file"
+                  id="updateCertificates"
+                  name="certificates"
+                  class="update-emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="update-emp-button-container">
+                  <button
+                    type="button"
+                    class="update-emp-upload-btn"
+                    onclick="document.getElementById('updateCertificates').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+
+              <!-- Other Documents (Multiple Files) -->
+              <div class="update-emp-upload-item">
+                <div class="update-emp-upload-head">
+                  <div class="update-emp-upload-icon">
+                    <img src="../assets/Imgaes/modal_doc_pin.webp" alt="" />
+                  </div>
+                  <label class="update-emp-upload-label">Other Documents</label>
+                </div>
+                <div
+                  class="update-emp-preview-container"
+                  id="update-preview-otherDocs"
+                ></div>
+                <input
+                  type="file"
+                  id="updateOtherDocs"
+                  name="otherDocs"
+                  class="update-emp-file-input"
+                  accept=".pdf,.jpg,.jpeg,.png"
+                  multiple
+                />
+                <div class="update-emp-button-container">
+                  <button
+                    type="button"
+                    class="update-emp-upload-btn"
+                    onclick="document.getElementById('updateOtherDocs').click()"
+                  >
+                    <img src="../assets/Imgaes/upload_arrowUP_btn.webp" alt="" />
+                    Upload
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <!-- Fixed Footer -->
+      <div class="update-emp-modal-footer">
+        <div class="update-emp-form-actions">
+          <button
+            type="submit"
+            class="update-emp-btn-submit"
+            id="updateEmpSubmitBtn"
+          >
+            Update Employee
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File View Modal -->
+  <div id="fileViewModal" class="update-emp-view-modal">
+    <div class="update-emp-view-modal-content">
+      <span class="update-emp-view-modal-close">&times;</span>
+      <div id="fileViewContent"></div>
+    </div>
+  </div>
+
+  <!--------------------------------------------End Update Employee Modal ------------------------------------------------>
+</div>

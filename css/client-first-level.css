@@ -1,0 +1,793 @@
+/* ========================================
+   FILTER BUTTON
+   ======================================== */
+.first-level-filter-btn {
+    background: #DFDFDF;
+    color: #5F5858;
+    border: 1px solid #CBCDD2;
+    padding: 10px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    transition: all 0.3s;
+    white-space: nowrap;
+    float: right;
+    margin-bottom: 1vw;
+}
+
+.first-level-filter-btn img {
+    width: 15px;
+    height: 15px;
+    object-fit: contain;
+}
+
+.first-level-filter-btn:hover {
+    background: #f3f4f6;
+    border-color: #0052CC;
+    transform: translateY(-1px);
+}
+
+.first-level-filter-btn:active {
+    transform: translateY(0);
+}
+
+/* ========================================
+   FILTER DROPDOWN MODAL
+   ======================================== */
+.first-level-filter-dropdown {
+    position: absolute;
+    top: 48px;
+    right: 0;
+    background: #ffffff;
+    border: 1px solid #CBCDD2;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    min-width: 10vw;
+    display: none;
+}
+
+.first-level-filter-dropdown.active {
+    display: block;
+    animation: fadeInDown 0.2s ease;
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.first-level-filter-dropdown-content {
+    padding: 1vw;
+}
+
+.first-level-filter-dropdown-title {
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: #000000;
+    margin: 0 0 .1vw 0;
+    padding-bottom: .5vw;
+    border-bottom: 2px solid #0052CC;
+}
+
+.first-level-filter-options {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-level-filter-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    padding: .5vw 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+}
+
+.first-level-filter-radio-label:hover {
+    background: #f3f4f6;
+}
+
+.first-level-filter-radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #0052CC;
+    flex-shrink: 0;
+}
+
+.first-level-filter-radio-label span {
+    font-size: 0.9rem;
+    color: #333;
+    user-select: none;
+}
+
+.first-level-filter-actions {
+    display: flex;
+    gap: 10px;
+    padding-top: .5vw;
+}
+
+.first-level-filter-apply-btn,
+.first-level-filter-clear-btn {
+    flex: 1;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: 'Gilroy-Bold', sans-serif;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.first-level-filter-apply-btn {
+    background: linear-gradient(to bottom, #0052cc 10%, #002966 100%);
+    color: white;
+}
+
+.first-level-filter-apply-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 82, 204, 0.3);
+}
+
+.first-level-filter-apply-btn:active {
+    transform: translateY(0);
+}
+
+.first-level-filter-clear-btn {
+    background: #e5e7eb;
+    color: #333;
+}
+
+.first-level-filter-clear-btn:hover {
+    background: #d1d5db;
+}
+
+/* ========================================
+   CONTAINER POSITIONING
+   ======================================== */
+#first-level {
+    position: relative;
+}
+
+/* Clear floats after filter button */
+#first-level::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ========================================
+   TABLE STYLES
+   ======================================== */
+.first-level-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+    margin-top: 16px;
+}
+
+.first-level-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1200px;
+}
+
+.first-level-table thead {
+    background: #cbcdd2;
+}
+
+.first-level-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    font-size: 0.86vw;
+    color: #333;
+    font-weight: 600;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.first-level-table thead th:last-child {
+    border-right: none;
+}
+
+.first-level-table tbody tr {
+    transition: background 0.2s ease;
+}
+
+.first-level-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.first-level-table tbody td {
+    padding: 16px 20px;
+    font-size: 0.9vw;
+    font-family: "Gilroy-Regular", sans-serif;
+    color: #333;
+    vertical-align: middle;
+    border-right: 2px solid #cbcdd2;
+    border-bottom: 2px solid #cbcdd2;
+}
+
+.first-level-table tbody td:last-child {
+    border-right: none;
+}
+
+.first-level-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Center align View column */
+.first-level-table tbody td:nth-child(9),
+.first-level-table thead th:nth-child(9) {
+    text-align: center;
+}
+
+/* ========================================
+   STATUS SELECT IN TABLE
+   ======================================== */
+.first-level-status-select {
+    padding: 8px 12px;
+    border: 1px solid #cbcdd2;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    cursor: pointer;
+    outline: none;
+    background-color: white;
+    transition: all 0.2s ease;
+    min-width: 140px;
+}
+
+.first-level-status-select:hover {
+    border-color: #0052cc;
+}
+
+.first-level-status-select:focus {
+    border-color: #0052cc;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+/* ========================================
+   VIEW BUTTON
+   ======================================== */
+.first-level-view-btn {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+}
+
+.first-level-view-btn:hover {
+    background: #f0f0f0;
+    transform: scale(1.1);
+}
+
+.first-level-view-btn img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* ========================================
+   MODAL STYLES
+   ======================================== */
+.first-level-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(3px);
+}
+
+.first-level-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.first-level-modal-content {
+    background-color: #fff;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+.first-level-modal-wide {
+    max-width: 800px;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.first-level-modal-header {
+    padding: 20px 30px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.first-level-modal-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #000000;
+    font-family: "Gilroy-Bold", sans-serif;
+}
+
+.first-level-modal-close,
+.first-level-view-modal-close {
+    color: #000000;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    line-height: 1;
+    border: none;
+    background: transparent;
+}
+
+.first-level-modal-close:hover,
+.first-level-view-modal-close:hover {
+    transform: scale(1.2);
+    color: #dc2626;
+}
+
+.first-level-modal-body {
+    padding: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+/* ========================================
+   FORM STYLES
+   ======================================== */
+.first-level-form-group {
+    margin-bottom: 20px;
+}
+
+.first-level-label {
+    display: block;
+    font-size: 0.9rem;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.first-level-required {
+    color: #dc2626;
+    font-weight: bold;
+}
+
+.first-level-input,
+.first-level-select,
+.first-level-textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #cbcdd2;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: "Gilroy-Regular", sans-serif;
+    transition: all 0.3s ease;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.first-level-input:focus,
+.first-level-select:focus,
+.first-level-textarea:focus {
+    border-color: #0052cc;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.first-level-input[readonly] {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+}
+
+.first-level-textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.first-level-modal-footer {
+    padding: 20px 30px;
+    background-color: #f9fafb;
+    border-radius: 0 0 12px 12px;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+.first-level-btn-save {
+    padding: 12px 40px;
+    background: linear-gradient(to bottom, #0052cc 10%, #002966 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: "Gilroy-Bold", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.first-level-btn-save:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 82, 204, 0.3);
+}
+
+.first-level-btn-save:active {
+    transform: translateY(0);
+}
+
+.first-level-btn-close {
+    padding: 12px 40px;
+    background: #e5e7eb;
+    color: #333;
+    border: none;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-family: "Gilroy-Bold", sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.first-level-btn-close:hover {
+    background: #d1d5db;
+}
+
+/* ========================================
+   VIEW MODAL STYLES
+   ======================================== */
+.first-level-section {
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.first-level-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.first-level-section-title {
+    font-size: 1.125rem;
+    font-family: "Gilroy-Bold", sans-serif;
+    color: #0052cc;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #0052cc;
+}
+
+.first-level-view-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.first-level-view-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.first-level-view-form-group.full-width {
+    grid-column: 1 / -1;
+}
+
+.first-level-view-label {
+    font-size: 0.85rem;
+    font-family: "Gilroy-SemiBold", sans-serif;
+    color: #333;
+    margin-bottom: 8px;
+}
+
+.first-level-view-input,
+.first-level-view-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbcdd2;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-family: "Gilroy-Regular", sans-serif;
+    background-color: #f9fafb;
+    color: #333;
+    cursor: not-allowed;
+    box-sizing: border-box;
+    outline: none;
+}
+
+.first-level-view-textarea {
+    resize: none;
+    min-height: 60px;
+}
+
+/* ========================================
+   RESPONSIVE STYLES
+   ======================================== */
+
+/* Desktop adjustments */
+@media (min-width: 1025px) {
+    .first-level-filter-btn {
+        font-size: 14px;
+    }
+    
+    .first-level-table thead th {
+        font-size: 14px;
+    }
+    
+    .first-level-table tbody td {
+        font-size: 14px;
+    }
+}
+
+/* Tablet (768px - 1024px) */
+@media (max-width: 1024px) {
+    .first-level-filter-btn {
+        font-size: 13px;
+        padding: 8px 14px;
+    }
+
+    .first-level-table {
+        min-width: 900px;
+    }
+
+    .first-level-table thead th {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+
+    .first-level-table tbody td {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+
+    .first-level-status-select {
+        font-size: 12px;
+        min-width: 120px;
+    }
+
+    .first-level-modal-wide {
+        max-width: 700px;
+    }
+
+    .first-level-section-title {
+        font-size: 1rem;
+    }
+
+    .first-level-view-label {
+        font-size: 0.8125rem;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 10px 12px;
+        font-size: 0.875rem;
+    }
+    .first-level-filter-dropdown {
+        top: 44px;
+        min-width: 180px;
+        border-radius: 10px;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    }
+
+    .first-level-filter-dropdown-content {
+        padding: 0.875rem;
+    }
+
+    .first-level-filter-dropdown-title {
+        font-size: 0.9375rem;
+        margin: 0 0 0.4375rem 0;
+        padding-bottom: 0.4375rem;
+    }
+
+    .first-level-filter-radio-label {
+        padding: 0.4375rem 10px;
+        gap: 8px;
+        border-radius: 6px;
+    }
+
+    .first-level-filter-radio-label input[type="radio"] {
+        width: 16px;
+        height: 16px;
+    }
+
+    .first-level-filter-radio-label span {
+        font-size: 0.8125rem;
+    }
+
+    .first-level-filter-actions {
+        gap: 8px;
+        padding-top: 0.4375rem;
+    }
+
+    .first-level-filter-apply-btn,
+    .first-level-filter-clear-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8125rem;
+        border-radius: 6px;
+    }
+}
+
+/* Mobile (481px - 767px) */
+@media (max-width: 767px) {
+    .first-level-filter-btn {
+        font-size: 12px;
+        padding: 8px 12px;
+        justify-content: center;
+        margin-bottom: 16px;
+    }
+
+    .first-level-filter-dropdown {
+        left: 0;
+        right: 0;
+        top: 56px;
+        min-width: 100%;
+    }
+
+    .first-level-table-container {
+        border-radius: 8px;
+    }
+
+    .first-level-table {
+        min-width: 100%;
+        font-size: 12px;
+    }
+
+    .first-level-table thead th {
+        padding: 12px 8px;
+        font-size: 11px;
+    }
+
+    .first-level-table tbody td {
+        padding: 12px 8px;
+        font-size: 11px;
+    }
+
+    .first-level-status-select {
+        font-size: 11px;
+        padding: 6px 8px;
+        min-width: auto;
+    }
+
+    .first-level-view-btn img {
+        width: 16px;
+        height: 16px;
+    }
+
+    .first-level-modal-content {
+        max-width: 95vw;
+        max-height: 90vh;
+    }
+
+    .first-level-modal-wide {
+        max-width: 95vw;
+    }
+
+    .first-level-view-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .first-level-modal-header {
+        padding: 16px 20px;
+    }
+
+    .first-level-modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .first-level-modal-body {
+        padding: 20px;
+    }
+
+    .first-level-section-title {
+        font-size: 0.9375rem;
+    }
+
+    .first-level-view-label {
+        font-size: 0.75rem;
+        margin-bottom: 6px;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 10px 12px;
+        font-size: 0.8125rem;
+    }
+
+    .first-level-modal-footer {
+        flex-direction: column;
+    }
+
+    .first-level-btn-save,
+    .first-level-btn-close {
+        width: 100%;
+    }
+    
+}
+
+/* Small Mobile (320px - 480px) */
+@media (max-width: 480px) {
+    .first-level-filter-btn {
+        font-size: 11px;
+    }
+
+    .first-level-table thead th {
+        padding: 10px 6px;
+        font-size: 10px;
+    }
+
+    .first-level-table tbody td {
+        padding: 10px 6px;
+        font-size: 10px;
+    }
+
+    .first-level-modal-header h2 {
+        font-size: 1.125rem;
+    }
+
+    .first-level-section-title {
+        font-size: 0.875rem;
+    }
+
+    .first-level-btn-save,
+    .first-level-btn-close {
+        padding: 12px 20px;
+        font-size: 0.875rem;
+    }
+
+    .first-level-view-label {
+        font-size: 0.6875rem;
+    }
+
+    .first-level-view-input,
+    .first-level-view-textarea {
+        padding: 8px 10px;
+        font-size: 0.75rem;
+    }
+}

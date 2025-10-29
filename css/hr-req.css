@@ -1,0 +1,442 @@
+/* HR Requests Container */
+.hr-requests-container {
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.hr-requests-section {
+    margin-bottom: 40px;
+}
+
+.hr-section-title {
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 20px;
+    color: #000;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+/* ==================== HISTORY BUTTON (TOP RIGHT) ==================== */
+
+.hr-requests-container {
+    position: relative;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.btn-history {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+    z-index: 10;
+}
+
+.btn-history:hover {
+    background: #003d99;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.btn-history svg {
+    flex-shrink: 0;
+}
+
+
+/* Requests Table Styles */
+.hr-requests-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e8e8e8;
+}
+
+.hr-requests-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 1000px;
+}
+
+.hr-requests-table thead {
+    background: #CBCDD2;
+}
+
+.hr-requests-table thead th {
+    padding: 16px 20px;
+    text-align: left;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    color: #333;
+    text-transform: none;
+    letter-spacing: 0;
+    border-right: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+}
+
+.hr-requests-table thead th:last-child {
+    border-right: none;
+}
+
+.hr-requests-table tbody tr {
+    transition: background 0.2s ease;
+    border-bottom: 2px solid #CBCDD2;
+}
+
+.hr-requests-table tbody tr:hover {
+    background: #fafafa;
+}
+
+.hr-requests-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.hr-requests-table tbody td {
+    padding: 16px 20px;
+    font-size: 14px;
+    font-family: 'Gilroy-Medium', sans-serif;
+    color: #333;
+    vertical-align: middle;
+    border-right: 2px solid #CBCDD2;
+}
+
+.hr-requests-table tbody td:last-child {
+    border-right: none;
+}
+
+/* Employee Name Cell */
+.hr-employee-name-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.hr-employee-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.hr-avatar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+    font-family: 'Gilroy-Bold', sans-serif;
+}
+
+/* Job Role Badge */
+.hr-job-role-badge {
+    display: inline-block;
+    padding: 5px 14px;
+    border-radius: 14px;
+    font-size: 13px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    text-transform: capitalize;
+}
+
+.hr-job-role-onrole {
+    background: #d4f4dd;
+    color: #0d6832;
+}
+
+.hr-job-role-intern {
+    background: #fff4d9;
+    color: #8b6914;
+}
+
+/* Decision Buttons */
+.hr-decision-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.hr-btn-accept,
+.hr-btn-reject {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.hr-btn-accept {
+    background: #22c55e;
+    color: white;
+}
+
+.hr-btn-accept:hover {
+    background: #16a34a;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(34, 197, 94, 0.3);
+}
+
+.hr-btn-reject {
+    background: #ef4444;
+    color: white;
+}
+
+.hr-btn-reject:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(239, 68, 68, 0.3);
+}
+
+.hr-btn-accept svg,
+.hr-btn-reject svg {
+    flex-shrink: 0;
+}
+
+/* ==================== HISTORY NAVIGATION BAR ==================== */
+
+.hr-history-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.btn-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+}
+
+.btn-back:hover {
+    background: #1e40af;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 12px rgba(30, 58, 138, 0.3);
+}
+
+.btn-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 24px;
+    background: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 82, 204, 0.2);
+}
+
+.btn-toggle:hover {
+    background: #003d99;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.btn-back svg,
+.btn-toggle svg {
+    flex-shrink: 0;
+}
+
+
+/* ==================== HISTORY SECTIONS ==================== */
+
+.hr-history-section {
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+
+.hr-history-section.active {
+    display: block;
+}
+
+
+/* ==================== DECISION STATUS BADGES ==================== */
+
+.hr-decision-status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.hr-decision-accepted {
+    background: #d4f4dd;
+    color: #0d6832;
+}
+
+.hr-decision-rejected {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.hr-decision-status svg {
+    flex-shrink: 0;
+}
+
+
+/* Responsive Styles */
+@media screen and (max-width: 1024px) {
+    .hr-requests-table {
+        min-width: 900px;
+    }
+    
+    .hr-requests-table thead th,
+    .hr-requests-table tbody td {
+        padding: 14px 16px;
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .hr-requests-container {
+        padding: 15px;
+    }
+    
+    .hr-section-title {
+        font-size: 18px;
+    }
+    
+    .hr-requests-table {
+        min-width: 800px;
+    }
+    
+    .hr-decision-buttons {
+        flex-direction: column;
+        gap: 6px;
+    }
+    
+    .hr-btn-accept,
+    .hr-btn-reject {
+        width: 100%;
+        justify-content: center;
+    }
+        .hr-history-nav {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .btn-back,
+    .btn-toggle {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .hr-requests-container {
+        padding: 10px;
+    }
+    
+    .hr-requests-section {
+        margin-bottom: 30px;
+    }
+    
+    /* Card Layout for Mobile */
+    .hr-requests-table {
+        display: block;
+        min-width: 100%;
+    }
+    
+    .hr-requests-table thead {
+        display: none;
+    }
+    
+    .hr-requests-table tbody {
+        display: block;
+    }
+    
+    .hr-requests-table tbody tr {
+        display: block;
+        margin-bottom: 16px;
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+        overflow: hidden;
+    }
+    
+    .hr-requests-table tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 16px;
+        border: none;
+        border-bottom: 1px solid #f0f0f0;
+        font-size: 14px;
+    }
+    
+    .hr-requests-table tbody td:last-child {
+        border-bottom: none;
+    }
+    
+    .hr-requests-table tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #666;
+        font-family: 'Gilroy-SemiBold', sans-serif;
+        margin-right: 10px;
+        flex-shrink: 0;
+    }
+    
+    .hr-decision-buttons {
+        width: 100%;
+        flex-direction: column;
+    }
+    
+    .hr-btn-accept,
+    .hr-btn-reject {
+        width: 100%;
+    }
+
+        .btn-history {
+        position: static;
+        width: 100%;
+        margin-bottom: 20px;
+        justify-content: center;
+    }
+}

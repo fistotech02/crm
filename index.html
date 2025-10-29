@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fist-O CRM</title>
+    <link rel="icon" type="image/png" href="./fevicon.jpeg" />
+
+    <link rel="stylesheet" href="./style.css?v=3" />
+    <link rel="stylesheet" href="./css/login.css?v=3" />
+  </head>
+
+  <body>
+    <!-- ************************************************************* LOGIN PAGE CODE START *************************************** -->
+    <div class="login-container">
+      <div class="logo">
+        <img src="./assets/Imgaes/Fist_O_logo_white.webp" alt="FIST-O Logo" />
+      </div>
+
+      <!-- Welcome Text -->
+      <h2 class="welcome-text">Welcome Back !</h2>
+
+      <!-- Login Form Card -->
+      <div class="form-card">
+        <form id="loginForm">
+          <!-- Employee ID Field -->
+          <div class="form-group">
+            <label for="employeeId">Employee ID *</label>
+            <div class="input-wrapper">
+              <span class="input-icon"
+                ><img src="./assets/Imgaes/man_login.webp" alt=""
+              /></span>
+              <input
+                type="text"
+                id="employeeId"
+                name="employeeId"
+                placeholder="Enter your Employee ID"
+                autocapitalize="characters"
+                oninput="this.value = this.value.toUpperCase()"
+                required
+              />
+               <span id="employeeIdError" class="error-text"></span>
+            </div>
+          </div>
+
+          <!-- Password Field -->
+          <div class="form-group">
+            <label for="password">Password *</label>
+            <div class="input-wrapper">
+              <span class="input-icon"
+                ><img src="./assets/Imgaes/lock_login.webp" alt=""
+              /></span>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                placeholder="Enter your Password"
+                required
+              />
+              <span class="password-toggle" onclick="togglePassword()">
+                <img
+                  src="./assets/Imgaes/eye_slash_login.webp"
+                  alt="Show Password"
+                />
+              </span>
+              <span id="passwordError" class="error-text"></span>
+            </div>
+          </div>
+        </form>
+      </div>
+      <!-- Form Card Ends Here -->
+
+      <!-- Forgot Password - OUTSIDE FORM CARD -->
+      <div class="forgot-password">
+        <a href="#">Forgot Password?</a>
+      </div>
+
+      <!-- Login Button - OUTSIDE FORM CARD -->
+      <button type="submit" form="loginForm" class="login-btn">LOGIN</button>
+    </div>
+    <!-- ************************************************************* LOGIN PAGE CODE END *************************************** -->
+
+    <script src="./script.js?v=3"></script>
+    <script src="./js/login.js?v=3"></script>
+  </body>
+</html>

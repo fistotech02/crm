@@ -1,0 +1,118 @@
+<div class="daily-reports-content">
+      <div class="dr-form-container">
+    <div class="dr-form-header">
+      <h2 class="dr-title">Daily Report :</h2>
+    </div>
+
+    <form id="dailyReportForm" class="dr-form">
+      <div class="dr-form-row">
+        <div class="dr-form-group">
+          <label for="drEmployeeId" class="dr-label">Employee Id</label>
+          <input 
+            type="text" 
+            id="drEmployeeId" 
+            class="dr-input" 
+            value="FSTINT01228" 
+            readonly
+          />
+        </div>
+
+        <div class="dr-form-group">
+          <label for="drDate" class="dr-label">Date</label>
+          <input 
+              type="text" 
+              id="drDate" 
+              class="dr-input dr-date-input" 
+              value="23-OCT-2025"
+            />
+        </div>
+
+        <div class="dr-form-group dr-project-name-group">
+          <label for="drProjectName" class="dr-label">Project Name</label>
+          <input 
+            type="text" 
+            id="drProjectName" 
+            class="dr-input" 
+            placeholder="Enter Project Name"
+          />
+        </div>
+      </div>
+
+      <!-- Second Row: Employee Name, Hours, Work Done (full width) -->
+      <div class="dr-form-row">
+        <div class="dr-form-group">
+          <label for="drEmployeeName" class="dr-label">Employee Name</label>
+          <input 
+            type="text" 
+            id="drEmployeeName" 
+            class="dr-input" 
+            value="Naveen"
+          />
+        </div>
+
+        <div class="dr-form-group">
+          <label for="drHours" class="dr-label">Hours</label>
+          <input 
+            type="number" 
+            id="drHours" 
+            class="dr-input" 
+            placeholder="-"
+          />
+        </div>
+
+        <div class="dr-form-group dr-work-done-group">
+          <label for="drWorkDone" class="dr-label">Work Done</label>
+          <textarea 
+            id="drWorkDone" 
+            class="dr-textarea" 
+            placeholder="Enter the work you done"
+            rows="4"
+          ></textarea>
+        </div>
+      </div>
+
+      <!-- Third Row: Section (radio buttons) -->
+      <div class="dr-form-row">
+        <div class="dr-form-group dr-section-group">
+          <label class="dr-label">Section</label>
+          <div class="dr-radio-group">
+            <label class="dr-radio-label">
+              <input 
+                type="radio" 
+                name="drSection" 
+                value="Full Day" 
+                class="dr-radio-input"
+                checked
+              />
+              <span class="dr-radio-text">Full Day</span>
+            </label>
+            <label class="dr-radio-label">
+              <input 
+                type="radio" 
+                name="drSection" 
+                value="Morning" 
+                class="dr-radio-input" 
+                
+              />
+              <span class="dr-radio-text">Morning</span>
+            </label>
+            <label class="dr-radio-label">
+              <input 
+                type="radio" 
+                name="drSection" 
+                value="Afternoon" 
+                class="dr-radio-input"
+              />
+              <span class="dr-radio-text">Afternoon</span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <div class="dr-form-actions">
+        <button type="submit" class="dr-btn dr-btn-submit">Submit</button>
+        <button type="reset" class="dr-btn dr-btn-reset">Reset</button>
+      </div>
+    </form>
+  </div>
+</div>

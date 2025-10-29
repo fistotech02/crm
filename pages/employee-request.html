@@ -1,0 +1,238 @@
+<div class="employee-request-content">
+  <h2>Employee Request</h2>
+  <div class="employee-request-tabs">
+    <button
+      class="employee-request-tab-button employee-request-active"
+      data-tab="apply-leave"
+    >
+      Apply Leave
+    </button>
+    <button class="employee-request-tab-button" data-tab="request-permission">
+      Request Permission
+    </button>
+    <button class="employee-request-tab-button" data-tab="schedule-meeting">
+      Schedule Meeting
+    </button>
+  </div>
+
+  <!-- Apply Leave Form -->
+  <div
+    class="employee-request-form-section employee-request-active"
+    id="apply-leave"
+  >
+    <h3 class="employee-request-section-title">Apply Leave</h3>
+    <form class="employee-request-form" id="apply-leave-form">
+      <div class="employee-request-form-row">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Leave Type <span class="employee-request-required">*</span></label
+          >
+          <select class="employee-request-select" required>
+            <option value="">Select Leave Type</option>
+            <option value="sick">Sick Leave</option>
+            <option value="casual">Casual Leave</option>
+            <option value="vacation">Vacation Leave</option>
+            <option value="personal">Personal Leave</option>
+          </select>
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Number of Days
+            <span class="employee-request-required">*</span></label
+          >
+          <select class="employee-request-select" required>
+            <option value="">Select Number of Days</option>
+            <option value="1">1 Day</option>
+            <option value="2">2 Days</option>
+            <option value="3">3 Days</option>
+            <option value="4">4 Days</option>
+            <option value="5">5 Days</option>
+            <option value="more">More than 5 Days</option>
+          </select>
+        </div>
+      </div>
+      <div class="employee-request-form-row employee-request-full-width">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Reason for Leave
+            <span class="employee-request-required">*</span></label
+          >
+          <textarea
+            class="employee-request-textarea"
+            placeholder="Please Provide reason for your leave request..."
+            required
+          ></textarea>
+        </div>
+      </div>
+      <div class="employee-request-submit-wrapper">
+        <button class="employee-request-submit-button" type="submit">
+          <img src="../assets/imgaes/er_arrow_btn.webp" alt="arrow icon" />
+          Submit Leave Application
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Request Permission Form -->
+  <div class="employee-request-form-section" id="request-permission">
+    <h3 class="employee-request-section-title">Request Permission</h3>
+    <form class="employee-request-form" id="request-permission-form">
+      <div class="employee-request-form-row">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Date <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input"
+            type="date"
+            placeholder="DD-MM-YYY"
+            required
+          />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >From Time <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input employee-request-from-time"
+            type="time"
+            required
+          />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >To Time <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input employee-request-to-time"
+            type="time"
+            required
+          />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Permission Duration</label
+          >
+          <input
+            class="employee-request-input employee-request-duration"
+            type="text"
+            placeholder="Hours"
+            readonly
+          />
+        </div>
+      </div>
+      <div class="employee-request-form-row employee-request-full-width">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Reason for Permission
+            <span class="employee-request-required">*</span></label
+          >
+          <textarea
+            class="employee-request-textarea"
+            placeholder="Please explain the reason for your permission request..."
+            required
+          ></textarea>
+        </div>
+      </div>
+      <div class="employee-request-submit-wrapper">
+        <button class="employee-request-submit-button" type="submit">
+          <img src="../assets/Imgaes/er_arrow_btn.webp" alt="arrow icon" />
+          Submit Permission Request
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Schedule Meeting Form -->
+  <div class="employee-request-form-section" id="schedule-meeting">
+    <h3 class="employee-request-section-title">Schedule Meeting</h3>
+    <form class="employee-request-form" id="schedule-meeting-form">
+      <div class="employee-request-form-row">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Meeting Title
+            <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input"
+            type="text"
+            placeholder="Enter Meeting Title"
+            required
+          />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Meeting Date
+            <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input"
+            type="date"
+            placeholder="DD-MM-YYY"
+            required
+          />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >From <span class="employee-request-required">*</span></label
+          >
+          <input class="employee-request-input" type="time" required />
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >To Time <span class="employee-request-required">*</span></label
+          >
+          <input class="employee-request-input" type="time" required />
+        </div>
+      </div>
+      <div class="employee-request-form-row">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Duration (Minutes)
+            <span class="employee-request-required">*</span></label
+          >
+          <select class="employee-request-select" required>
+            <option value="">Select Duration</option>
+            <option value="15">15 Minutes</option>
+            <option value="30">30 Minutes</option>
+            <option value="45">45 Minutes</option>
+            <option value="60">1 Hour</option>
+            <option value="90">1.5 Hours</option>
+            <option value="120">2 Hours</option>
+          </select>
+        </div>
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Attendees (Employee IDs)
+            <span class="employee-request-required">*</span></label
+          >
+          <input
+            class="employee-request-input"
+            type="text"
+            placeholder="Enter employee IDs (eg. EMP001)"
+            required
+          />
+        </div>
+      </div>
+      <div class="employee-request-form-row employee-request-full-width">
+        <div class="employee-request-field-group">
+          <label class="employee-request-field-label"
+            >Meeting Description
+            <span class="employee-request-required">*</span></label
+          >
+          <textarea
+            class="employee-request-textarea"
+            placeholder="Please explain the reason for your meeting..."
+            required
+          ></textarea>
+        </div>
+      </div>
+      <div class="employee-request-submit-wrapper">
+        <button class="employee-request-submit-button" type="submit">
+          <img src="../assets/Imgaes/er_cal_btn.webp" alt="call icon" />
+          Schedule Meeting
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

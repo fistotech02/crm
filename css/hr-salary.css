@@ -1,0 +1,1210 @@
+/* ==================== HR SALARY COMPLETE CSS ==================== */
+
+/* Header */
+.hr-salary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .5vw;
+  gap: 15px;
+}
+
+/* Calendar Widget */
+.hr-salary-calendar-widget {
+  position: relative;
+}
+
+.hr-salary-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+  font-family: 'Gilroy-Medium', sans-serif;
+  font-size: .8vw;
+  margin-top: .5vw;
+}
+
+.hr-salary-calendar-header:hover {
+  border-color: #0052CC;
+}
+
+.hr-salary-calendar-label {
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: .1vw;
+  color: #333;
+}
+
+.hr-salary-calendar-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.hr-salary-calendar-btn:hover {
+  transform: scale(1.1);
+}
+
+.hr-salary-calendar-btn img {
+  width: 25px;
+  height: auto;
+}
+
+.hr-salary-calendar-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 100;
+  padding: 15px;
+}
+
+.hr-salary-calendar-month-year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .3vw;
+  font-family: 'Gilroy-Bold', sans-serif;
+  font-size: 1rem;
+  color: #333;
+}
+
+.hr-salary-calendar-nav {
+  background: none;
+  border: none;
+  font-size: 1vw;
+  cursor: pointer;
+  padding: 5px 10px;
+  color: #0052CC;
+  transition: background 0.2s;
+  border-radius: 4px;
+}
+
+.hr-salary-calendar-nav:hover {
+  background: #f0f0f0;
+}
+
+.hr-salary-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  margin-bottom: 10px;
+}
+
+.hr-salary-calendar-day-header {
+  text-align: center;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #666;
+  padding: 5px;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+}
+
+.hr-salary-calendar-day {
+  text-align: center;
+  padding: 8px;
+  cursor: pointer;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  font-family: 'Gilroy-Regular', sans-serif;
+  transition: all 0.2s;
+  color: #333;
+}
+
+.hr-salary-calendar-day:hover {
+  background: #e3f2fd;
+}
+
+.hr-salary-calendar-day.selected {
+  background: #0052CC;
+  color: white;
+  font-weight: bold;
+}
+
+.hr-salary-calendar-day.today {
+  border: 2px solid #0052CC;
+  font-weight: bold;
+}
+
+.hr-salary-calendar-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.hr-salary-calendar-actions button {
+  padding: 6px 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+/* Buttons */
+.hr-salary-back-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #0052CC;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1vw;
+  font-family: 'Gilroy-Bold', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin: 1vw 0;
+}
+
+.hr-salary-back-btn:hover {
+  background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+  transform: translateX(-3px);
+}
+
+.hr-salary-generate-btn {
+  padding: 10px 25px;
+  background: #0052CC;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1vw;
+  font-family: 'Gilroy-Bold', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hr-salary-generate-btn:hover {
+  background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 82, 204, 0.3);
+}
+
+/* Tables */
+.hr-salary-list-table {
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
+.hr-salary-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+  min-width: 1200px;
+}
+
+.hr-salary-list-table thead,
+.hr-salary-detail-table thead {
+  background: #CBCDD2;
+}
+
+.hr-salary-list-table th,
+.hr-salary-detail-table th {
+  padding: 16px 20px;
+  text-align: center;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: .86vw;
+  color: #333;
+  text-transform: none;
+  letter-spacing: 0;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+
+.hr-salary-list-table th:last-child,
+.hr-salary-detail-table th:last-child {
+  border-right: none;
+}
+
+.hr-salary-list-table td,
+.hr-salary-detail-table td {
+  padding: 16px 20px;
+  text-align: center;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: .9vw;
+  color: #333;
+  vertical-align: middle;
+  border-right: 2px solid #CBCDD2;
+  border-bottom: 2px solid #CBCDD2;
+}
+
+.hr-salary-list-table td:last-child,
+.hr-salary-detail-table td:last-child {
+  border-right: none;
+}
+
+.hr-salary-list-table tbody tr,
+.hr-salary-detail-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.hr-salary-list-table tbody tr:hover,
+.hr-salary-detail-table tbody tr:hover {
+  background: #fafafa;
+}
+
+.hr-salary-list-table tbody tr:last-child td,
+.hr-salary-detail-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Table Buttons */
+.hr-salary-click-btn,
+.hr-salary-view-btn {
+  padding: 8px 20px;
+  background: #0052CC;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  font-size: 0.9rem;
+  transition: all 0.3s;
+}
+
+.hr-salary-click-btn:hover,
+.hr-salary-view-btn:hover {
+  background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 82, 204, 0.3);
+}
+
+/* Avatar & Badges */
+.hr-salary-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  font-family: 'Gilroy-Bold', sans-serif;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.hr-salary-jobrole-badge {
+  display: inline-block;
+  padding: 5px 14px;
+  border-radius: 14px;
+  font-size: .84vw;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  text-transform: capitalize;
+}
+
+.hr-salary-jobrole-onrole {
+  background: #d4f4dd;
+  color: #0d6832;
+}
+
+.hr-salary-jobrole-intern {
+  background: #fff4d9;
+  color: #8b6914;
+}
+
+/* Table Wrapper */
+.hr-salary-month-list {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+
+.hr-salary-detail-view {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 1vw;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e8e8e8;
+}
+
+/* ==================== MODAL STYLES (EXACTLY LIKE YOUR IMAGE) ==================== */
+
+.hr-salary-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  animation: hrSalaryFadeIn 0.3s ease;
+}
+
+@keyframes hrSalaryFadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.hr-salary-modal-content {
+  background-color: #d9dce2;
+  margin: 2% auto;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 55vw;
+  max-height: 90vh;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+  animation: hrSalarySlideDown 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+@keyframes hrSalarySlideDown {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Fixed Header - Blue Background */
+.hr-salary-modal-header {
+  background: #0052CC;
+  color: white;
+  padding: 18px 30px;
+  border-radius: 12px 12px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.hr-salary-modal-header h2 {
+  font-size: 1.3vw;
+  color: white;
+  margin: 0;
+  font-family: 'Gilroy-Bold', sans-serif;
+}
+
+.hr-salary-modal-close {
+  color: white;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.hr-salary-modal-close:hover {
+  transform: scale(1.1);
+}
+
+/* Scrollable Body */
+.hr-salary-modal-body {
+  padding: 25px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1;
+  background: #d9dce2;
+}
+
+.hr-salary-modal-body::-webkit-scrollbar {
+  width: 8px;
+}
+
+.hr-salary-modal-body::-webkit-scrollbar-track {
+  background: #c5c9d0;
+  border-radius: 10px;
+}
+
+.hr-salary-modal-body::-webkit-scrollbar-thumb {
+  background: grey;
+  border-radius: 10px;
+}
+
+.hr-salary-modal-body::-webkit-scrollbar-thumb:hover {
+  background: #003d99;
+}
+
+/* Form Sections - White Cards */
+.hr-salary-form-section {
+  margin-bottom: 18px;
+  padding: 22px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.hr-salary-form-section:last-of-type {
+  margin-bottom: 0;
+}
+
+.hr-salary-section-title {
+  margin-bottom: 18px;
+  color: #1a1a1a;
+  font-size: 1.1vw;
+  font-family: 'Gilroy-Bold', sans-serif;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.hr-salary-section-icon {
+  font-size: 1.3rem;
+}
+
+/* Form Layout */
+.hr-salary-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 0;
+}
+
+.hr-salary-form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.hr-salary-label {
+  margin-bottom: 8px;
+  font-size: .88vw;
+  font-family: 'Gilroy-SemiBold', sans-serif;
+  color: #333;
+}
+
+.hr-salary-label .required {
+  color: red;
+  margin-left: 2px;
+}
+
+/* Input Fields */
+.hr-salary-input,
+.hr-salary-select,
+.hr-salary-textarea {
+  padding: 11px 14px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: .88vw;
+  font-family: 'Gilroy-Regular', sans-serif;
+  background: white;
+  transition: all 0.3s ease;
+  color: #666;
+}
+
+.hr-salary-input::placeholder,
+.hr-salary-select::placeholder,
+.hr-salary-textarea::placeholder {
+  color: #9ca3af;
+}
+
+.hr-salary-input:focus,
+.hr-salary-select:focus,
+.hr-salary-textarea:focus {
+  outline: none;
+  border-color: #0052CC;
+  box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.hr-salary-input:read-only {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+/* Radio Buttons */
+.hr-salary-radio-group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding-top: 8px;
+}
+
+.hr-salary-radio-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 0;
+  cursor: pointer;
+  font-size: .88vw;
+  font-family: 'Gilroy-Regular', sans-serif;
+  color: #333;
+}
+
+.hr-salary-radio {
+  cursor: pointer;
+  width: 16px;
+  height: 16px;
+  accent-color: #0052CC;
+}
+
+/* Employee Search Dropdown */
+.hr-salary-employee-search {
+  position: relative;
+}
+
+.hr-salary-search-results {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  margin-top: 4px;
+}
+
+.hr-salary-search-item {
+  padding: 12px 15px;
+  cursor: pointer;
+  border-bottom: 1px solid #f3f4f6;
+  font-family: 'Gilroy-Regular', sans-serif;
+  transition: background 0.2s;
+  color: #333;
+}
+
+.hr-salary-search-item:last-child {
+  border-bottom: none;
+}
+
+.hr-salary-search-item:hover {
+  background: #f9fafb;
+}
+
+/* Fixed Footer */
+.hr-salary-modal-footer {
+  padding: 20px 30px;
+  background-color: #d9dce2;
+  border-radius: 0 0 12px 12px;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: center;
+}
+
+.hr-salary-form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* Action Buttons */
+.hr-salary-btn-submit,
+.hr-salary-btn-cancel {
+  padding: 12px 40px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1vw;
+  font-family: 'Gilroy-Bold', sans-serif;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.hr-salary-btn-submit {
+  background: #0052CC;
+  color: white;
+  box-shadow: 0 2px 4px rgba(0, 82, 204, 0.2);
+}
+
+.hr-salary-btn-submit:hover {
+  background: #003d99;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 82, 204, 0.3);
+}
+
+.hr-salary-btn-cancel {
+  background-color: #e5e7eb;
+  color: #374151;
+}
+
+.hr-salary-btn-cancel:hover {
+  background-color: #d1d5db;
+}
+
+/* ==================== COMPLETE RESPONSIVE MEDIA QUERIES FOR HR SALARY ==================== */
+
+/* ==================== TABLET (768px - 1024px) ==================== */
+@media (max-width: 1024px) {
+  /* Header & Calendar */
+  .hr-salary-header {
+    gap: 12px;
+    margin-bottom: 0.875rem;
+  }
+
+  .hr-salary-calendar-widget {
+    max-width: 220px;
+  }
+
+  .hr-salary-calendar-header {
+    font-size: 0.8125rem;
+    padding: 8px 12px;
+  }
+
+  .hr-salary-calendar-label {
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-calendar-dropdown {
+    min-width: 260px;
+    padding: 12px;
+  }
+
+  .hr-salary-calendar-month-year {
+    font-size: 0.9375rem;
+    margin-bottom: 0.625rem;
+  }
+
+  .hr-salary-calendar-nav {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-calendar-day-header {
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-calendar-day {
+    font-size: 0.8125rem;
+    padding: 6px;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    padding: 8px 18px;
+    font-size: 0.9375rem;
+  }
+
+  /* Tables */
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 14px 16px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 14px 16px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 16px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-avatar {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+  }
+
+  /* Modal */
+  .hr-salary-modal-content {
+    max-width: 70vw;
+  }
+
+  .hr-salary-modal-header {
+    padding: 16px 24px;
+  }
+
+  .hr-salary-modal-header h2 {
+    font-size: 1.125rem;
+  }
+
+  .hr-salary-modal-close {
+    font-size: 24px;
+  }
+
+  .hr-salary-modal-body {
+    padding: 20px;
+  }
+
+  .hr-salary-form-section {
+    padding: 18px;
+    margin-bottom: 15px;
+  }
+
+  .hr-salary-section-title {
+    font-size: 1rem;
+    margin-bottom: 15px;
+  }
+
+  .hr-salary-section-icon {
+    font-size: 1.1rem;
+  }
+
+  .hr-salary-form-row {
+    gap: 15px;
+  }
+
+  .hr-salary-label {
+    font-size: 0.8125rem;
+    margin-bottom: 6px;
+  }
+
+  .hr-salary-input,
+  .hr-salary-select,
+  .hr-salary-textarea {
+    padding: 10px 12px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio-label {
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-modal-footer {
+    padding: 16px 24px;
+  }
+
+  .hr-salary-btn-submit,
+  .hr-salary-btn-cancel {
+    padding: 10px 32px;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ==================== MOBILE (481px - 767px) ==================== */
+@media (max-width: 767px) {
+  /* Header & Calendar */
+  .hr-salary-header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+  }
+
+  .hr-salary-calendar-widget {
+    max-width: 100%;
+  }
+
+  .hr-salary-calendar-header {
+    font-size: 0.875rem;
+    padding: 10px 12px;
+  }
+
+  .hr-salary-calendar-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 280px;
+    padding: 12px;
+  }
+
+  .hr-salary-calendar-month-year {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-calendar-day {
+    padding: 8px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-calendar-btn img {
+    width: 20px;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    width: 100%;
+    justify-content: center;
+    padding: 10px 20px;
+    font-size: 0.9375rem;
+  }
+
+  /* Tables */
+  .hr-salary-month-list,
+  .hr-salary-detail-view {
+    overflow-x: auto;
+    margin-top: 0.75rem;
+  }
+
+  .hr-salary-list-table,
+  .hr-salary-detail-table {
+    min-width: 800px;
+  }
+
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 12px 10px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 12px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  .hr-salary-avatar {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.6875rem;
+    padding: 4px 10px;
+  }
+
+  /* Modal */
+  .hr-salary-modal {
+    padding: 10px;
+  }
+
+  .hr-salary-modal-content {
+    width: 95%;
+    max-width: 95vw;
+    margin: 5% auto;
+    max-height: 90vh;
+  }
+
+  .hr-salary-modal-header {
+    padding: 15px 20px;
+  }
+
+  .hr-salary-modal-header h2 {
+    font-size: 1rem;
+  }
+
+  .hr-salary-modal-close {
+    font-size: 22px;
+  }
+
+  .hr-salary-modal-body {
+    padding: 15px;
+  }
+
+  .hr-salary-form-section {
+    padding: 15px;
+    margin-bottom: 12px;
+  }
+
+  .hr-salary-section-title {
+    font-size: 0.9375rem;
+    margin-bottom: 12px;
+  }
+
+  .hr-salary-section-icon {
+    font-size: 1rem;
+  }
+
+  .hr-salary-form-row {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .hr-salary-label {
+    font-size: 0.875rem;
+    margin-bottom: 6px;
+  }
+
+  .hr-salary-input,
+  .hr-salary-select,
+  .hr-salary-textarea {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-radio-group {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+  }
+
+  .hr-salary-radio-label {
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-search-results {
+    max-height: 150px;
+  }
+
+  .hr-salary-search-item {
+    padding: 10px 12px;
+    font-size: 0.875rem;
+  }
+
+  .hr-salary-modal-footer {
+    padding: 15px 20px;
+  }
+
+  .hr-salary-form-actions {
+    flex-direction: column-reverse;
+    width: 100%;
+  }
+
+  .hr-salary-btn-submit,
+  .hr-salary-btn-cancel {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 0.9375rem;
+  }
+}
+
+/* ==================== SMALL MOBILE (320px - 480px) ==================== */
+@media (max-width: 480px) {
+  /* Header & Calendar */
+  .hr-salary-header {
+    margin-bottom: 0.625rem;
+    gap: 8px;
+  }
+
+  .hr-salary-calendar-dropdown {
+    min-width: calc(100vw - 40px);
+    max-width: 300px;
+    padding: 10px;
+  }
+
+  .hr-salary-calendar-month-year {
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .hr-salary-calendar-day-header {
+    font-size: 0.625rem;
+    padding: 4px;
+  }
+
+  .hr-salary-calendar-day {
+    padding: 6px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-calendar-actions button {
+    padding: 6px 12px;
+    font-size: 0.75rem;
+  }
+
+  /* Buttons */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+  }
+
+  /* Tables */
+  .hr-salary-list-table,
+  .hr-salary-detail-table {
+    min-width: 700px;
+  }
+
+  .hr-salary-list-table th,
+  .hr-salary-detail-table th {
+    padding: 10px 8px;
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-list-table td,
+  .hr-salary-detail-table td {
+    padding: 10px 8px;
+    font-size: 0.75rem;
+  }
+
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    padding: 6px 10px;
+    font-size: 0.6875rem;
+  }
+
+  .hr-salary-avatar {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  .hr-salary-jobrole-badge {
+    font-size: 0.625rem;
+    padding: 3px 8px;
+  }
+
+  /* Modal */
+  .hr-salary-modal-content {
+    width: 98%;
+    max-width: 98vw;
+    margin: 2% auto;
+    border-radius: 10px;
+  }
+
+  .hr-salary-modal-header {
+    padding: 12px 15px;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .hr-salary-modal-header h2 {
+    font-size: 0.9375rem;
+  }
+
+  .hr-salary-modal-close {
+    font-size: 20px;
+  }
+
+  .hr-salary-modal-body {
+    padding: 12px;
+  }
+
+  .hr-salary-form-section {
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  .hr-salary-section-title {
+    font-size: 0.875rem;
+    margin-bottom: 10px;
+    gap: 6px;
+  }
+
+  .hr-salary-section-icon {
+    font-size: 0.9rem;
+  }
+
+  .hr-salary-form-row {
+    gap: 10px;
+  }
+
+  .hr-salary-label {
+    font-size: 0.8125rem;
+    margin-bottom: 5px;
+  }
+
+  .hr-salary-input,
+  .hr-salary-select,
+  .hr-salary-textarea {
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio-group {
+    gap: 10px;
+  }
+
+  .hr-salary-radio-label {
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-radio {
+    width: 14px;
+    height: 14px;
+  }
+
+  .hr-salary-search-results {
+    max-height: 120px;
+  }
+
+  .hr-salary-search-item {
+    padding: 8px 10px;
+    font-size: 0.8125rem;
+  }
+
+  .hr-salary-modal-footer {
+    padding: 12px 15px;
+  }
+
+  .hr-salary-btn-submit,
+  .hr-salary-btn-cancel {
+    padding: 10px 16px;
+    font-size: 0.875rem;
+  }
+}
+
+/* ==================== TOUCH DEVICE OPTIMIZATION ==================== */
+@media (hover: none) and (pointer: coarse) {
+  /* Increase touch targets */
+  .hr-salary-back-btn,
+  .hr-salary-generate-btn,
+  .hr-salary-click-btn,
+  .hr-salary-view-btn {
+    min-height: 44px;
+  }
+
+  .hr-salary-calendar-day {
+    min-width: 36px;
+    min-height: 36px;
+  }
+
+  .hr-salary-input,
+  .hr-salary-select {
+    min-height: 44px;
+  }
+
+  /* Remove hover effects on touch */
+  .hr-salary-back-btn:hover,
+  .hr-salary-generate-btn:hover,
+  .hr-salary-click-btn:hover,
+  .hr-salary-view-btn:hover {
+    transform: none;
+  }
+
+  /* Add active states */
+  .hr-salary-back-btn:active,
+  .hr-salary-generate-btn:active,
+  .hr-salary-click-btn:active,
+  .hr-salary-view-btn:active {
+    transform: scale(0.97);
+  }
+}
+
+/* ==================== LANDSCAPE MOBILE ==================== */
+@media (max-width: 767px) and (orientation: landscape) {
+  .hr-salary-modal-content {
+    max-height: 85vh;
+  }
+
+  .hr-salary-calendar-dropdown {
+    max-height: 70vh;
+    overflow-y: auto;
+  }
+}

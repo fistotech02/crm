@@ -1,0 +1,747 @@
+/* ==================== DAILY REPORTS STYLES ==================== */
+
+.dr-form-header {
+    display: flex;
+    align-items: center;
+    gap: 0.8vw;
+    margin-bottom: 2vw;
+}
+
+.dr-form-header i {
+    font-size: 1.5vw;
+    color: #0052CC;
+}
+
+.dr-title {
+    font-size: 1.5vw;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: #0052CC;
+    margin: 0;
+}
+
+/* ==================== FORM ROWS AND GROUPS ==================== */
+
+.dr-form {
+    width: 100%;
+}
+
+.dr-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr; /* Employee ID, Date small | Project Name large */
+    gap: 1.5vw;
+    margin-bottom: 1.5vw;
+}
+
+.dr-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Make Project Name span full width in its position */
+.dr-project-name-group {
+    grid-column: 3 / 4;
+}
+
+
+.dr-label {
+    font-size: 0.875vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #1a1a1a;
+    margin-bottom: 0.5vw;
+    font-weight: 500;
+}
+
+/* ==================== INPUT STYLES ==================== */
+
+.dr-input,
+.dr-textarea {
+    padding: 0.75vw 1vw;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 0.875vw;
+    color: #333;
+    font-family: 'Gilroy-Regular', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.dr-input:focus,
+.dr-textarea:focus {
+    outline: none;
+    border-color: #0052CC;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.dr-input[readonly] {
+    background-color: #f5f5f5;
+    color: #6c757d;
+    cursor: not-allowed;
+}
+
+.dr-input::placeholder,
+.dr-textarea::placeholder {
+    color: #aaa;
+}
+
+/* ==================== DATE INPUT WRAPPER ==================== */
+
+.dr-date-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.dr-date-input {
+    padding-right: 2.5vw;
+}
+
+.dr-calendar-icon {
+    position: absolute;
+    right: 1vw;
+    color: #6c757d;
+    pointer-events: none;
+    font-size: 1vw;
+}
+
+/* ==================== TEXTAREA ==================== */
+
+.dr-textarea {
+    resize: vertical;
+    min-height: 120px;
+    font-family: 'Gilroy-Regular', sans-serif;
+}
+
+/* ==================== SECTION RADIO BUTTONS ==================== */
+
+.dr-section-group {
+    grid-column: 1 / -1; /* Span all columns */
+}
+
+.dr-radio-group {
+    display: flex;
+    gap: 2vw;
+    margin-top: 0.5vw;
+    flex-wrap: wrap;
+}
+
+.dr-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5vw;
+    cursor: pointer;
+    font-size: 0.875vw;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.dr-radio-label:hover {
+    color: #0052CC;
+}
+
+.dr-radio-input {
+    width: 1.2vw;
+    height: 1.2vw;
+    cursor: pointer;
+    accent-color: #0052CC;
+}
+
+.dr-radio-text {
+    user-select: none;
+}
+
+/* ==================== FORM ACTIONS ==================== */
+
+.dr-form-actions {
+    display: flex;
+    gap: 1vw;
+    margin-top: 2.5vw;
+    justify-content: center;
+}
+
+.dr-btn {
+    padding: 0.875vw 2.5vw;
+    border: none;
+    border-radius: 15px;
+    font-size: 1vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dr-btn-submit {
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: white;
+}
+
+.dr-btn-submit:hover {
+    background: linear-gradient(to bottom, #003d99 10%, #001a4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.dr-btn-reset {
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: white;
+}
+
+.dr-btn-reset:hover {
+    background: linear-gradient(to bottom, #003d99 10%, #001a4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+.dr-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ==================== MODAL STYLES ==================== */
+
+.dr-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.dr-modal-content {
+    background: white;
+    padding: 50px 60px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    animation: drSlideUp 0.4s ease;
+}
+
+.dr-success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #d4f4f1 0%, #a8e6dd 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dr-modal-content h2 {
+    font-size: 28px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.dr-modal-content p {
+    font-size: 16px;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: #666;
+    margin: 0 0 30px 0;
+}
+
+#drBackToDashboard {
+    padding: 12px 35px;
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 16px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#drBackToDashboard:hover {
+    background: linear-gradient(to bottom, #003d99 10%, #001a4d 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes drSlideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+
+/* ==================== MODAL OVERLAY ==================== */
+
+.dr-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+/* ==================== MODAL DISPLAY ==================== */
+
+.dr-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    justify-content: center;
+    align-items: center;
+}
+
+.dr-modal.dr-show {
+    display: flex;
+}
+
+/* ==================== MODAL CONTENT ==================== */
+
+.dr-modal-content {
+    position: relative;
+    background: white;
+    padding: 50px 60px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 10000;
+}
+
+.dr-modal.dr-show .dr-modal-content {
+    animation: drSlideUp 0.4s ease;
+}
+
+/* ==================== SUCCESS ICON ==================== */
+
+.dr-success-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 30px;
+    background: linear-gradient(135deg, #d4f4f1 0%, #a8e6dd 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dr-modal.dr-show .dr-success-icon {
+    animation: drScaleIn 0.5s ease;
+}
+
+/* Checkmark Circle Animation */
+.dr-checkmark-circle {
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+}
+
+.dr-modal.dr-show .dr-checkmark-circle {
+    animation: drStrokeCircle 0.6s ease-out forwards;
+}
+
+/* Checkmark Path Animation */
+.dr-checkmark-check {
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+}
+
+.dr-modal.dr-show .dr-checkmark-check {
+    animation: drStrokeCheck 0.4s ease-out 0.4s forwards;
+}
+
+/* ==================== MODAL TEXT ==================== */
+
+.dr-modal-content h2 {
+    font-size: 28px;
+    font-family: 'Gilroy-Bold', sans-serif;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.dr-modal-content p {
+    font-size: 16px;
+    font-family: 'Gilroy-Regular', sans-serif;
+    color: #666;
+    margin: 0 0 30px 0;
+}
+
+/* ==================== BACK BUTTON ==================== */
+
+#drBackToDashboard {
+    padding: 12px 35px;
+    background: #0d6efd;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#drBackToDashboard:hover {
+    background: #0b5ed7;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(13, 110, 253, 0.3);
+}
+
+/* ==================== ANIMATIONS ==================== */
+
+@keyframes drSlideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes drScaleIn {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes drStrokeCircle {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+@keyframes drStrokeCheck {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+
+/* iPad Pro and Large Tablets (1024px and below) */
+@media (max-width: 1024px) {
+    .dr-form-header i {
+        font-size: 1.5rem;
+    }
+
+    .dr-title {
+        font-size: 1.75rem;
+    }
+
+    .dr-label {
+        font-size: 1rem;
+    }
+
+    .dr-input,
+    .dr-textarea {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+
+    .dr-radio-label {
+        font-size: 1rem;
+    }
+
+    .dr-radio-input {
+        width: 18px;
+        height: 18px;
+    }
+
+    .dr-btn {
+        font-size: 1.125rem;
+        padding: 12px 35px;
+    }
+
+    .dr-form-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 15px;
+    }
+
+    .dr-project-name-group,
+    .dr-work-done-group {
+        grid-column: 1 / -1;
+    }
+}
+
+/* iPad and Standard Tablets (768px and below) */
+@media (max-width: 768px) {
+    .daily-reports-content {
+        padding: 20px;
+    }
+
+    .dr-form-container {
+        padding: 25px;
+    }
+
+    .dr-form-header {
+        margin-bottom: 25px;
+    }
+
+    .dr-form-header i {
+        font-size: 1.25rem;
+    }
+
+    .dr-title {
+        font-size: 1.5rem;
+    }
+
+    .dr-label {
+        font-size: 0.938rem;
+        margin-bottom: 6px;
+    }
+
+    .dr-input,
+    .dr-textarea {
+        font-size: 0.938rem;
+        padding: 10px 12px;
+    }
+
+    .dr-textarea {
+        min-height: 100px;
+    }
+
+    .dr-radio-label {
+        font-size: 0.938rem;
+        gap: 8px;
+    }
+
+    .dr-radio-input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dr-btn {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    .dr-form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .dr-project-name-group,
+    .dr-work-done-group {
+        grid-column: 1;
+        grid-row: auto;
+    }
+
+    .dr-form-actions {
+        margin-top: 30px;
+    }
+
+    .dr-modal-content {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+     .dr-modal-content {
+        padding: 40px 30px;
+        margin: 20px;
+    }
+
+    .dr-success-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .dr-modal-content h2 {
+        font-size: 1.5rem;
+    }
+
+    .dr-modal-content p {
+        font-size: 1rem;
+    }
+
+    #drBackToDashboard {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .daily-reports-content {
+        padding: 15px;
+    }
+
+    .dr-form-container {
+        padding: 20px;
+    }
+
+    .dr-form-header {
+        margin-bottom: 20px;
+    }
+
+    .dr-form-header i {
+        font-size: 1.125rem;
+    }
+
+    .dr-title {
+        font-size: 1.25rem;
+    }
+
+    .dr-label {
+        font-size: 0.875rem;
+        margin-bottom: 6px;
+    }
+
+    .dr-input,
+    .dr-textarea {
+        font-size: 0.875rem;
+        padding: 10px 12px;
+    }
+
+    .dr-textarea {
+        min-height: 90px;
+    }
+
+    .dr-radio-group {
+        gap: 15px;
+    }
+
+    .dr-radio-label {
+        font-size: 0.875rem;
+    }
+
+    .dr-radio-input {
+        width: 16px;
+        height: 16px;
+    }
+
+    .dr-btn {
+        font-size: 0.938rem;
+        padding: 12px 25px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .dr-form-row {
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .dr-form-actions {
+        margin-top: 25px;
+        flex-direction: column;
+    }
+
+    .dr-success-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .dr-modal-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .dr-modal-content p {
+        font-size: 0.938rem;
+    }
+
+    #drBackToDashboard {
+        font-size: 0.938rem;
+        padding: 12px 25px;
+        width: 100%;
+    }
+
+     .dr-modal-content {
+        padding: 30px 20px;
+    }
+
+    .dr-success-icon {
+        width: 70px;
+        height: 70px;
+    }
+
+    .dr-modal-content h2 {
+        font-size: 1.25rem;
+    }
+
+    .dr-modal-content p {
+        font-size: 0.938rem;
+    }
+
+    #drBackToDashboard {
+        font-size: 0.938rem;
+        padding: 12px 25px;
+        width: 100%;
+    }
+}
+
+/* Small Mobile Devices (375px and below) */
+@media (max-width: 375px) {
+    .daily-reports-content {
+        padding: 12px;
+    }
+
+    .dr-form-container {
+        padding: 18px;
+    }
+
+    .dr-title {
+        font-size: 1.125rem;
+    }
+
+    .dr-label {
+        font-size: 0.813rem;
+    }
+
+    .dr-input,
+    .dr-textarea {
+        font-size: 0.813rem;
+        padding: 10px;
+    }
+
+    .dr-radio-label {
+        font-size: 0.813rem;
+    }
+
+    .dr-btn {
+        font-size: 0.875rem;
+        padding: 12px 20px;
+    }
+
+    .dr-modal-content {
+        padding: 30px 20px;
+    }
+
+    .dr-modal-content h2 {
+        font-size: 1.125rem;
+    }
+
+    .dr-modal-content p {
+        font-size: 0.875rem;
+    }
+
+    #drBackToDashboard {
+        font-size: 0.875rem;
+        padding: 12px 20px;
+    }
+}

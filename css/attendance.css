@@ -1,0 +1,348 @@
+/* ==================== ATTENDANCE MODAL ==================== */
+
+.attendance-modal {
+  display: none;
+    position: fixed;
+    z-index: 10000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    animation: attendanceFadeIn 0.3s ease;
+}
+
+.attendance-modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attendance-modal-content {
+    background: white;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    animation: attendanceSlideUp 0.3s ease;
+}
+
+/* Modal Header */
+.attendance-modal-header {
+    background:linear-gradient(to bottom, #0052cc 10%, #002966 100%);
+    color: white;
+    padding: 20px 30px;
+    border-radius: 12px 12px 0 0;
+    position: relative;
+}
+
+.attendance-modal-header h2 {
+    margin: 0;
+    font-family: 'Gilroy-Bold', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.attendance-close-btn {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: transparent;
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 5px;
+    transition: transform 0.2s ease;
+}
+
+.attendance-close-btn:hover {
+    transform: rotate(90deg);
+}
+
+.attendance-timer {
+    margin-top: 10px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+/* Modal Body */
+.attendance-modal-body {
+    padding: 30px;
+}
+
+.attendance-form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.attendance-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.attendance-form-group label {
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.attendance-form-group input[type="text"] {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 14px;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.attendance-form-group input[type="text"]:focus {
+    outline: none;
+    border-color: #0052cc;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.attendance-form-group input[type="text"]::placeholder {
+    color: #999;
+}
+
+/* Date Input with Icon */
+.attendance-date-input {
+    position: relative;
+}
+
+.attendance-date-input input {
+    padding-right: 45px;
+}
+
+.attendance-date-input svg {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+}
+
+/* Dropdown/Select */
+.attendance-select {
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 14px;
+    color: #333;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%23333' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    padding-right: 45px;
+}
+
+.attendance-select:focus {
+    outline: none;
+    border-color: #0052cc;
+    box-shadow: 0 0 0 3px rgba(0, 82, 204, 0.1);
+}
+
+.attendance-select:disabled {
+    background-color: #f5f5f5;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* Radio Buttons */
+.attendance-radio-group {
+    display: flex;
+    gap: 20px;
+    margin-top: 8px;
+}
+
+.attendance-radio-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: 'Gilroy-Medium', sans-serif;
+    font-size: 14px;
+    color: #333;
+}
+
+.attendance-radio-label input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #0052cc;
+}
+
+.attendance-radio-label input[type="radio"]:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.attendance-radio-label.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Modal Footer */
+.attendance-modal-footer {
+    padding: 20px 30px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.attendance-btn-cancel,
+.attendance-btn-submit {
+    padding: 12px 32px;
+    border: none;
+    border-radius: 8px;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.attendance-btn-cancel {
+    background: white;
+    color: #666;
+    border: 1px solid #e0e0e0;
+}
+
+.attendance-btn-cancel:hover {
+    background: #f5f5f5;
+    border-color: #ccc;
+}
+
+.attendance-btn-submit {
+    background: #0052cc;
+    color: white;
+}
+
+.attendance-btn-submit:hover {
+    background: #003d99;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 82, 204, 0.3);
+}
+
+/* ==================== SUCCESS NOTIFICATION ==================== */
+
+.attendance-success-notification {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10001;
+    animation: attendanceSlideDown 0.4s ease;
+}
+
+.attendance-success-notification.show {
+    display: block;
+}
+
+.attendance-success-content {
+    background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+    color: white;
+    padding: 16px 32px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 24px rgba(34, 197, 94, 0.4);
+}
+
+.attendance-success-icon {
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.attendance-success-text {
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ==================== UNIQUE ANIMATIONS ==================== */
+
+@keyframes attendanceFadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes attendanceSlideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes attendanceSlideDown {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+}
+
+/* Responsive */
+@media screen and (max-width: 768px) {
+    .attendance-form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .attendance-modal-content {
+        width: 95%;
+        margin: 20px;
+    }
+
+    .attendance-modal-header,
+    .attendance-modal-body,
+    .attendance-modal-footer {
+        padding: 20px;
+    }
+
+    .attendance-modal-footer {
+        flex-direction: column;
+    }
+
+    .attendance-btn-cancel,
+    .attendance-btn-submit {
+        width: 100%;
+    }
+
+    .attendance-success-content {
+        padding: 12px 24px;
+    }
+
+    .attendance-success-text {
+        font-size: 14px;
+    }
+}

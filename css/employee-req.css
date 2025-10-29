@@ -1,0 +1,391 @@
+.employee-request-content h2 {
+    font-size: 2vw;
+    font-family: 'Gilroy-Bold', sans-serif;
+}
+
+.employee-request-tabs {
+    display: inline-flex;
+    gap: 1vw;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 0.5vw;
+    background: white;
+    margin: 1vw 0 1vw 0;
+}
+
+.employee-request-tab-button {
+    padding: 10px 28px;
+    border: none;
+    background: transparent;
+    color: #666;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 0.95vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+.employee-request-tab-button:hover {
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: #ffffff;
+    border-color: #0052CC;
+}
+
+.employee-request-tab-button.employee-request-active {
+     background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    color: #ffffff;
+}
+
+.employee-request-form-section {
+    display: none;
+}
+
+.employee-request-form-section.employee-request-active {
+    display: block;
+    animation: employeeRequestFadeIn 0.3s ease;
+}
+
+@keyframes employeeRequestFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.employee-request-section-title {
+    font-size: 1.25vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #1a1a1a;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+.employee-request-form-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.employee-request-form-row.employee-request-full-width {
+    grid-template-columns: 1fr;
+}
+
+.employee-request-field-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.employee-request-field-label {
+    font-size: 0.875vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    color: #1a1a1a;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.employee-request-field-label .employee-request-required {
+    color: #d32f2f;
+}
+
+.employee-request-input,
+.employee-request-select,
+.employee-request-textarea {
+    padding: 12px 15px;
+    border: 1px solid #d0d0d0;
+    border-radius: 6px;
+    font-size: 0.875vw;
+    color: #333;
+    transition: border-color 0.3s ease;
+    font-family: 'Gilroy-Regular', sans-serif;
+}
+
+.employee-request-input:focus,
+.employee-request-select:focus,
+.employee-request-textarea:focus {
+    outline: none;
+    border-color: #0052cc;
+}
+
+.employee-request-input::placeholder,
+.employee-request-textarea::placeholder {
+    color: #aaa;
+}
+
+.employee-request-textarea {
+    min-height: 120px;
+    resize: vertical;
+}
+
+.employee-request-input[type="date"],
+.employee-request-input[type="time"] {
+    cursor: pointer;
+}
+
+.employee-request-submit-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.employee-request-submit-button {
+    padding: 14px 40px;
+    background: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 15px;
+    font-size: 1vw;
+    font-family: 'Gilroy-SemiBold', sans-serif;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.employee-request-submit-button:hover {
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+}
+
+.employee-request-submit-button img {
+    width: 100%;
+    height: auto;
+    max-width: 1.5vw;
+}
+
+/* iPad Pro and Large Tablets (1024px and below) */
+@media (max-width: 1024px) {
+    .employee-request-title {
+        font-size: 2rem;
+    }
+
+    .employee-request-section-title {
+        font-size: 1.75rem;
+    }
+
+     .employee-request-tabs {
+        gap: 0.625rem;
+        padding: 0.5rem;
+        margin: 0.875rem 0;
+        border-radius: 8px;
+    }
+
+    .employee-request-tab-button {
+        padding: 0.625rem 1.25rem;
+        font-size: clamp(0.75rem, 0.9vw, 0.9375rem);
+        border-radius: 8px;
+    }
+
+    .employee-request-tab-button {
+        font-size: 1.125rem;
+        padding: 10px 25px;
+    }
+
+    .employee-request-field-label {
+        font-size: 1rem;
+    }
+
+    .employee-request-input,
+    .employee-request-select,
+    .employee-request-textarea {
+        font-size: 1rem;
+        padding: 10px 12px;
+    }
+
+    .employee-request-submit-button {
+        font-size: 1.125rem;
+        padding: 12px 35px;
+    }
+
+    .employee-request-submit-button img {
+        max-width: 1.25rem;
+    }
+
+    .employee-request-form-row {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+}
+
+/* iPad and Standard Tablets (768px and below) */
+@media (max-width: 768px) {
+    .page-content {
+        padding: 20px !important;
+    }
+
+    .employee-request-title {
+        font-size: 1.75rem;
+        margin-bottom: 20px;
+    }
+
+     .employee-request-tabs {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.75rem 0;
+        border-radius: 8px;
+        /* Option 1: Grid layout for mobile */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    }
+
+    .employee-request-tab-button {
+        padding: 0.625rem 1rem;
+        font-size: clamp(0.75rem, 0.85vw, 0.875rem);
+        border-radius: 6px;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .employee-request-section-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+   
+    .employee-request-field-label {
+        font-size: 0.938rem;
+        margin-bottom: 6px;
+    }
+
+    .employee-request-input,
+    .employee-request-select,
+    .employee-request-textarea {
+        font-size: 0.938rem;
+        padding: 10px 12px;
+    }
+
+    .employee-request-textarea {
+        min-height: 100px;
+    }
+
+    .employee-request-submit-button {
+        font-size: 1rem;
+        padding: 12px 30px;
+    }
+
+    .employee-request-submit-button img {
+        max-width: 1.125rem;
+    }
+
+    .employee-request-form-row {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .employee-request-submit-wrapper {
+        margin-top: 30px;
+    }
+}
+
+/* Mobile Devices (480px and below) */
+@media (max-width: 480px) {
+    .page-content {
+        padding: 15px !important;
+    }
+
+    .employee-request-title {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+    }
+
+     .employee-request-tabs {
+        gap: 0.5rem;
+        padding: 0.5rem;
+        margin: 0.625rem 0;
+        border-radius: 6px;
+        /* Option: Single column on very small screens */
+        grid-template-columns: 1fr; /* Stack vertically */
+    }
+
+    .employee-request-tab-button {
+        padding: 0.625rem 0.75rem;
+        font-size: clamp(0.6875rem, 0.8vw, 0.8125rem);
+        border-radius: 6px;
+        width: 100%; /* Full width buttons */
+    }
+
+    .employee-request-section-title {
+        font-size: 1.25rem;
+        margin-bottom: 18px;
+    }
+
+    .employee-request-field-label {
+        font-size: 0.875rem;
+        margin-bottom: 6px;
+    }
+
+    .employee-request-input,
+    .employee-request-select,
+    .employee-request-textarea {
+        font-size: 0.875rem;
+        padding: 10px 12px;
+    }
+
+    .employee-request-textarea {
+        min-height: 90px;
+    }
+
+    .employee-request-submit-button {
+        font-size: 0.938rem;
+        padding: 12px 25px;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .employee-request-submit-button img {
+        max-width: 1rem;
+    }
+
+    .employee-request-form-row {
+        gap: 12px;
+        margin-bottom: 15px;
+    }
+
+    .employee-request-submit-wrapper {
+        margin-top: 25px;
+    }
+}
+
+/* Small Mobile Devices (375px and below) */
+@media (max-width: 375px) {
+    .page-content {
+        padding: 12px !important;
+    }
+
+    .employee-request-title {
+        font-size: 1.375rem;
+        margin-bottom: 15px;
+    }
+
+    .employee-request-section-title {
+        font-size: 1.125rem;
+        margin-bottom: 15px;
+    }
+
+    .employee-request-field-label {
+        font-size: 0.813rem;
+    }
+
+    .employee-request-input,
+    .employee-request-select,
+    .employee-request-textarea {
+        font-size: 0.813rem;
+        padding: 10px;
+    }
+
+    .employee-request-submit-button {
+        font-size: 0.875rem;
+        padding: 12px 20px;
+    }
+
+    .employee-request-submit-button img {
+        max-width: 0.938rem;
+    }
+}

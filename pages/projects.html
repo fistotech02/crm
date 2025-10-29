@@ -1,0 +1,906 @@
+<div class="projects-content">
+  <!-- Add Project Button -->
+  <div class="project-header-section">
+    <h2>Projects</h2>
+    <button id="addProjectBtn" class="project-btn-primary">
+      + New Project
+    </button>
+  </div>
+
+  <!-- Search and Filter Section -->
+  <div class="project-info-search-section">
+    <div class="table-header-info">
+      <span>All Projects (<span id="totalProjects">0</span>)</span>
+    </div>
+    <div class="project-search-filter-section">
+      <div class="search-box">
+        <input
+          type="text"
+          id="projectSearchInput"
+          placeholder="Search"
+          class="project-search-input"
+        />
+      </div>
+      <button id="filterBtn" class="project-filter-btn">
+        <img src="../assets/imgaes/filter_list.webp" alt="" /> Filter
+      </button>
+    </div>
+  </div>
+
+  <!-- Success Toast -->
+  <div id="successToast" class="success-toast">
+    <span class="success-icon">✓</span>
+    <span id="successText">Project added successfully</span>
+  </div>
+
+  <!-- PROJECT TABLE -->
+  <div class="project-table-wrapper">
+    <div class="project-table-container">
+      <table class="project-table">
+        <thead>
+          <tr>
+            <th>Project Name</th>
+            <th>Start Date</th>
+            <th>Deadline</th>
+            <th>Team Head</th>
+            <th>Project Status</th>
+            <th>View</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody id="projectTableBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- PAGINATION -->
+  <div class="pagination-container">
+    <button id="prevBtn" class="pagination-btn" disabled>Previous</button>
+    <div id="paginationNumbers" class="pagination-numbers"></div>
+    <button id="nextBtn" class="pagination-btn">Next</button>
+  </div>
+
+  <!-- ADD PROJECT MODAL -->
+  <div id="projectModal" class="project-modal">
+    <div class="project-modal-content">
+      <div class="project-modal-header">
+        <h2>Add New Project</h2>
+        <span class="project-modal-close">&times;</span>
+      </div>
+      <div class="project-modal-body">
+        <form id="projectForm">
+          <div class="form-section">
+            <h4 class="section-title">Project Details</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Customer ID <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="customerId"
+                  class="project-input"
+                  placeholder="EST1N98"
+                  readonly
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label
+                  >Selection Onboarding Projects
+                  <span class="required">*</span></label
+                >
+                <select id="onboardingProject" class="project-select" required>
+                  <option value="">
+                    -- Select Project from Client Table --
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Project Description <span class="required">*</span></label>
+              <textarea
+                id="projectDescription"
+                class="project-textarea"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Contact Details</h4>
+            <div id="contactFieldsContainer"></div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Documents</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Upload Document</label>
+                <div class="file-upload-wrapper">
+                  <input type="file" id="documentUpload" class="file-input" />
+                  <button type="button" class="file-choose-btn">
+                    Choose File
+                  </button>
+                  <span class="file-name">No file Selected</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Link Name</label>
+                <input type="Name" class="project-input" />
+              </div>
+              <div class="form-group">
+                <label>Enter Document Link</label>
+                <input type="url" id="documentLink" class="project-input" />
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section">
+            <h4 class="section-title">Project Assignment</h4>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Allocated Team <span class="required">*</span></label>
+                <select id="allocatedTeam" class="project-select">
+                  <option value="">Select Team</option>
+                </select>
+                <div
+                  id="selectedTeamsContainer"
+                  class="selected-teams-container"
+                ></div>
+              </div>
+              <div class="form-group">
+                <label>Reporting Person <span class="required">*</span></label>
+                <input
+                  type="text"
+                  id="reportingPerson"
+                  class="project-input"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Start Date <span class="required">*</span></label>
+                <input
+                  type="date"
+                  id="startDate"
+                  class="project-input"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Completion Date <span class="required">*</span></label>
+                <input
+                  type="date"
+                  id="completionDate"
+                  class="project-input"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label>Review Date</label>
+                <input type="date" id="revieDate" class="project-input" />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Remarks</label>
+              <textarea
+                id="remarks"
+                class="project-textarea"
+                rows="3"
+              ></textarea>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="project-modal-footer">
+        <button type="button" class="btn-secondary" id="clearFormBtn">
+          Clear Form
+        </button>
+        <button type="button" class="btn-primary" id="projectSubmitBtn">
+          Submit
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECT OVERVIEW PAGE -->
+<div
+  id="projectOverviewPage"
+  class="project-overview-page"
+  style="display: none"
+>
+  <!-- Breadcrumbs -->
+  <div class="project-overview-breadcrumbs">
+    <span onclick="backToProjectsList()" style="cursor: pointer; color: #0052cc"
+      >Project</span
+    >
+    <span> / </span>
+    <span id="projectOverviewName" style="color: #666">Excel software</span>
+    <span> / </span>
+    <span style="color: #0052cc">Overview</span>
+  </div>
+
+  <!-- Tabs -->
+  <div class="project-overview-tabs">
+    <button
+      class="project-overview-tab-btn active"
+      onclick="switchProjectOverviewTab('overview')"
+    >
+      Overview
+    </button>
+    <button
+      class="project-overview-tab-btn"
+      onclick="switchProjectOverviewTab('resources')"
+    >
+      Resources
+    </button>
+  </div>
+
+  <!-- OVERVIEW TAB -->
+  <div
+    id="projectOverviewTabContent"
+    class="project-overview-tab-content active"
+  >
+    <!-- Stats Cards -->
+    <div class="project-overview-stats">
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <span
+            class="project-overview-stat-number"
+            id="projectOverviewAssignedEmployees"
+            >4</span
+          >
+          <span class="project-overview-stat-label">Assigned Employees</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/assigned_emp_icon.webp" alt="" />
+        </div>
+      </div>
+
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <div>
+            <span
+              class="project-overview-stat-number"
+              id="projectOverviewTotalTasks"
+              >3</span
+            >
+            <span class="project-overview-stat-sub">(8)</span>
+          </div>
+          <span class="project-overview-stat-label">Total Tasks</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/total_task_icon.webp" alt="" />
+        </div>
+      </div>
+
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <span
+            class="project-overview-stat-number"
+            id="projectOverviewCompletedTasks"
+            >1</span
+          >
+          <span class="project-overview-stat-label">Completed Tasks</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/completed_task_icon.webp" alt="" />
+        </div>
+      </div>
+
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <div>
+            <span
+              class="project-overview-stat-number"
+              id="projectOverviewOngoingTasks"
+              >2</span
+            >
+            <span class="project-overview-stat-sub">(8)</span>
+          </div>
+          <span class="project-overview-stat-label">Ongoing Tasks</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/ongoing_task_icon.webp" alt="" />
+        </div>
+      </div>
+
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <span
+            class="project-overview-stat-number"
+            id="projectOverviewDelayedTasks"
+            >0</span
+          >
+          <span class="project-overview-stat-label">Delayed Tasks</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/delayed_task_icon.webp" alt="" />
+        </div>
+      </div>
+
+      <div class="project-overview-stat-card">
+        <div class="project-overview-stat-info">
+          <span
+            class="project-overview-stat-number project-overview-status-red"
+            id="projectOverviewOverdueTasks"
+            >0</span
+          >
+          <span class="project-overview-stat-label">Overdue Tasks</span>
+        </div>
+        <div class="project-overview-stat-icon">
+          <img src="../assets/imgaes/overdue_icon.webp" alt="" />
+        </div>
+      </div>
+    </div>
+
+    <!-- Project Details -->
+    <div class="project-overview-details-section">
+      <div class="project-overview-details-header-row">
+        <!-- Left Side: Large Project Info Card -->
+        <div class="project-overview-large-card">
+          <div class="project-overview-large-card-inner">
+            <div class="project-overview-title-wrapper">
+              <h3 id="projectOverviewTitle">Excel Software</h3>
+              <span
+                class="project-overview-priority-badge project-overview-priority-high"
+                >High</span
+              >
+            </div>
+            <p
+              class="project-overview-description"
+              id="projectOverviewDescription"
+            >
+              to create excel software
+            </p>
+          </div>
+          <div class="project-overview-user-info">
+            <div class="project-overview-user-avatar">F</div>
+            <div class="project-overview-user-details">
+              <span class="project-overview-user-name">Fisto</span>
+              <span class="project-overview-user-role">Initiated By</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Side: 2x2 Grid of Cards -->
+        <div class="project-overview-grid-section">
+          <!-- Card 1: Team Head -->
+          <div class="project-overview-card">
+            <div class="project-overview-user-info project-overview-team-head">
+              <img
+                src="../assets/imgaes/crown_TL.webp"
+                alt="Crown"
+                class="project-overview-crown-icon"
+              />
+              <div class="project-overview-user-avatar">F</div>
+              <div class="project-overview-user-details">
+                <span class="project-overview-user-name">Fisto</span>
+                <span class="project-overview-user-role">Team Head</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Employees -->
+          <div class="project-overview-card">
+            <span class="project-overview-card-label">Employees</span>
+            <div class="project-overview-employees-content">
+              <button
+                class="project-overview-add-view-btn"
+                onclick="openProjectOverviewEmployeeModal()"
+              >
+                <img src="../assets/imgaes/person_add.webp" alt="" /> Add/View
+              </button>
+              <div
+                class="project-overview-employee-avatars"
+                id="projectOverviewEmployeeAvatars"
+              >
+                <div class="project-overview-avatar-circle">J</div>
+                <div class="project-overview-avatar-circle">M</div>
+                <div class="project-overview-avatar-circle">S</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Starting Date -->
+          <div class="project-overview-card">
+            <span class="project-overview-card-label">Starting Date</span>
+            <span
+              class="project-overview-date-badge"
+              id="projectOverviewStartingDate"
+              >10-10-2025</span
+            >
+          </div>
+
+          <!-- Card 4: Deadline Date -->
+          <div class="project-overview-card">
+            <span class="project-overview-card-label">Deadline Date</span>
+            <span
+              class="project-overview-date-badge"
+              id="projectOverviewDeadlineDate"
+              >24-10-2025</span
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TASKS TABLE -->
+    <div class="project-tasks-section">
+      <div class="project-task-add-btn-wrap">
+        <button class="project-task-add-btn" onclick="openTaskManagementPage()">
+          <img src="../assets/imgaes/plus_btn.webp" alt="" /> Add task
+        </button>
+      </div>
+      <div class="project-tasks-header">
+        <h3>Tasks / Activity Reports</h3>
+        <div class="project-tasks-actions">
+          <div class="project-tasks-actions">
+            <div class="Taskproject-search-filter-section">
+              <div class="Tasksearch-box">
+                <input
+                  type="text"
+                  id="TaskprojectSearchInput"
+                  placeholder="Search"
+                  class="Taskproject-search-input"
+                />
+              </div>
+              <button id="TaskfilterBtn" class="Taskproject-filter-btn">
+                <img src="../assets/imgaes/filter_list.webp" alt="" /> Filter
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="project-tasks-table-wrapper">
+        <table class="project-tasks-table">
+          <thead>
+            <tr>
+              <th>S.No</th>
+              <th>Tasks / Activities</th>
+              <th>Description</th>
+              <th>Start Date</th>
+              <th>Start Time</th>
+              <th>End Date</th>
+              <th>End Time</th>
+              <th>Assigned By</th>
+              <th>Assigned To</th>
+              <th>Reports</th>
+              <th>Progress</th>
+              <th>Status</th>
+              <th>Comments</th>
+            </tr>
+          </thead>
+          <tbody id="projectTasksTableBody">
+            <tr>
+              <td
+                colspan="13"
+                style="text-align: center; padding: 40px; color: #999"
+              >
+                No tasks found. Click "Add task" to create new tasks.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="taskpagination-container">
+        <button id="taskprevBtn" class="taskpagination-btn" disabled="">
+          Previous
+        </button>
+        <div id="taskpaginationNumbers" class="taskpagination-numbers">
+          <button class="taskpage-number active">01</button
+          ><button class="taskpage-number">02</button>
+        </div>
+        <button id="tasknextBtn" class="taskpagination-btn">Next</button>
+      </div>
+    </div>
+  </div>
+
+  <!------------------------------------------------ RESOURCES TAB ------------------------------------------->
+  <!-- RESOURCES TAB -->
+  <div
+    id="projectOverviewResourcesTabContent"
+    class="project-overview-tab-content"
+  >
+    <div class="project-resources-section">
+      <!-- Header -->
+      <div class="project-resources-header">
+        <div class="project-resources-folder-icon">
+          <img src="../assets/imgaes/folder_icon.webp" alt="" />
+        </div>
+        <div class="project-resources-header-content">
+          <h4>Assets & Shared Links</h4>
+          <p
+            class="project-resources-subtitle"
+            id="projectResourcesProjectName"
+          >
+            Excel Software
+          </p>
+        </div>
+      </div>
+
+      <!-- Project Requirements Section -->
+      <div class="project-resources-item-section">
+        <div class="project-resources-item-header">
+          <div class="project-resources-item-icon">
+            <img src="../assets/imgaes/blue_folder_icon.webp" alt="" />
+          </div>
+          <div class="project-resources-item-info">
+            <h5>Project requirements</h5>
+            <p>Upload Project files (e.g., DOC, PDF, images)</p>
+          </div>
+        </div>
+        <div class="project-resources-item-actions">
+          <button
+            class="project-resources-upload-btn"
+            onclick="openProjectResourcesFileModal()"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"
+              />
+            </svg>
+            Upload
+          </button>
+          <button
+            class="project-resources-view-btn"
+            onclick="openProjectResourcesFileViewModal()"
+          >
+            View
+          </button>
+        </div>
+      </div>
+
+      <!-- Reference Links Section -->
+      <div class="project-resources-item-section">
+        <div class="project-resources-item-header">
+          <div class="project-resources-item-icon">
+            <img src="../assets/imgaes/link_icon.webp" alt="" />
+          </div>
+          <div class="project-resources-item-info">
+            <h5>Reference Links</h5>
+            <p>Links</p>
+          </div>
+        </div>
+        <div class="project-resources-item-actions">
+          <button
+            id="resourceUpload"
+            class="project-resources-upload-btn"
+            onclick="openProjectResourcesLinkModal()"
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+            >
+              <path
+                d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"
+              />
+            </svg>
+            Upload
+          </button>
+          <button
+            class="project-resources-view-btn"
+            onclick="openProjectResourcesLinkViewModal()"
+          >
+            View
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TASK MANAGEMENT PAGE -->
+<div id="taskManagementPage" class="task-management-page" style="display: none">
+  <div class="task-management-breadcrumbs">
+    <span
+      onclick="backToProjectOverview()"
+      style="cursor: pointer; color: #0052cc"
+      >Project</span
+    >
+    <span> / </span>
+    <span
+      onclick="backToProjectOverview()"
+      style="cursor: pointer; color: #0052cc"
+      id="taskBreadcrumbProjectName"
+      >Excel software</span
+    >
+    <span> / </span>
+    <span style="color: #666">Manage Tasks</span>
+  </div>
+
+  <h2 class="task-management-title">Manage Tasks</h2>
+
+  <div class="task-cards-container" id="taskCardsContainer" ></div>
+
+  <button class="task-add-more-btn" onclick="addNewTaskCard()">
+    ➕ Add Task
+  </button>
+
+  <div class="task-management-actions">
+    <button class="task-cancel-btn" onclick="backToProjectOverview()">
+      Cancel
+    </button>
+    <button class="task-save-btn" onclick="saveAllTasks()">Save</button>
+  </div>
+</div>
+
+<!-- EMPLOYEE MODAL -->
+<div id="projectOverviewEmployeeModal" class="project-overview-employee-modal">
+  <div class="project-overview-employee-modal-content">
+    <div class="project-overview-employee-modal-header">
+      <h2>
+        Manage Employees (<span id="projectOverviewEmployeeModalProjectName"
+          >Excel software</span
+        >)
+      </h2>
+      <span
+        class="project-overview-employee-modal-close"
+        onclick="closeProjectOverviewEmployeeModal()"
+        >&times;</span
+      >
+    </div>
+
+    <div class="project-overview-employee-tabs">
+      <button
+        class="project-overview-employee-tab-btn active"
+        onclick="switchProjectOverviewEmployeeTab('allocate')"
+      >
+        Allocate (<span id="projectOverviewAllocateCount">5</span>)
+      </button>
+      <button
+        class="project-overview-employee-tab-btn"
+        onclick="switchProjectOverviewEmployeeTab('allocated')"
+      >
+        Allocated (<span id="projectOverviewAllocatedCount">4</span>)
+      </button>
+    </div>
+
+    <div class="project-overview-employee-search">
+      <input
+        type="text"
+        id="projectOverviewEmployeeSearchInput"
+        placeholder="Search employees..."
+        class="project-overview-employee-search-input"
+      />
+    </div>
+
+    <div
+      id="projectOverviewAllocateTabContent"
+      class="project-overview-employee-tab-content active"
+    >
+      <div
+        class="project-overview-employee-list"
+        id="projectOverviewAllocateList"
+      ></div>
+    </div>
+
+    <div
+      id="projectOverviewAllocatedTabContent"
+      class="project-overview-employee-tab-content"
+    >
+      <div
+        class="project-overview-employee-list"
+        id="projectOverviewAllocatedList"
+      ></div>
+    </div>
+
+    <div class="project-overview-employee-modal-footer">
+      <button
+        class="project-overview-btn-cancel"
+        onclick="closeProjectOverviewEmployeeModal()"
+      >
+        Cancel
+      </button>
+      <button
+        class="project-overview-btn-save"
+        onclick="saveProjectOverviewEmployeeChanges()"
+      >
+        Save Changes
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- UPLOAD PROJECT FILES MODAL -->
+<div id="projectResourcesFileModal" class="project-resources-modal">
+  <div class="project-resources-modal-content">
+    <div class="project-resources-modal-header">
+      <h3>Upload assets</h3>
+      <span class="project-resources-file-progress">0 Bytes / 50MB</span>
+    </div>
+    <div class="project-resources-dropzone" id="projectResourcesFileDropzone">
+      <div class="project-resources-dropzone-icon">
+        <svg
+          width="48"
+          height="48"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#999"
+        >
+          <path
+            d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"
+          />
+        </svg>
+      </div>
+      <p class="project-resources-dropzone-text">
+        Drag & drop your files here or click to browse
+      </p>
+      <p class="project-resources-dropzone-formats">
+        Allowed formats: .DOC, .DOCX, .PNG, .JPEG, .PDF, .ZIP | Max size: 50MB
+      </p>
+      <input
+        type="file"
+        id="projectResourcesFileInput"
+        multiple
+        accept=".doc,.docx,.png,.jpg,.jpeg,.pdf,.zip"
+        style="display: none"
+      />
+    </div>
+    <div
+      class="project-resources-selected-files"
+      id="projectResourcesSelectedFiles"
+      style="display: none"
+    >
+      <h4>Select Files :</h4>
+      <div id="projectResourcesFilesList"></div>
+    </div>
+    <div class="project-resources-modal-footer">
+      <button
+        class="project-resources-btn-cancel"
+        onclick="closeProjectResourcesFileModal()"
+      >
+        Cancel
+      </button>
+      <button
+        class="project-resources-btn-upload"
+        onclick="uploadProjectResourcesFiles()"
+      >
+        Upload
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== VIEW PROJECT FILES MODAL ==================== -->
+<div id="projectResourcesFileViewModal" class="project-resources-modal">
+  <div class="project-resources-modal-content">
+    <div class="project-resources-modal-header">
+      <h3>View Uploaded Files</h3>
+      <span
+        class="project-resources-modal-close"
+        onclick="closeProjectResourcesFileViewModal()"
+        >&times;</span
+      >
+    </div>
+    <div
+      class="project-resources-files-list"
+      id="projectResourcesUploadedFilesList"
+    >
+      <!-- Files will be dynamically loaded here -->
+    </div>
+    <div class="project-resources-modal-footer">
+      <button
+        class="project-resources-btn-cancel"
+        onclick="closeProjectResourcesFileViewModal()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ==================== UPLOAD REFERENCE LINKS MODAL ==================== -->
+
+<!-- ==================== VIEW REFERENCE LINKS MODAL ==================== -->
+<!-- <div id="projectResourcesLinkViewModal" class="project-resources-modal">
+  <div class="project-resources-modal-content">
+    <div class="project-resources-modal-header">
+      <h3>View Uploaded Links</h3>
+      <span
+        class="project-resources-modal-close"
+        onclick="closeProjectResourcesLinkViewModal()"
+        >&times;</span
+      >
+    </div>
+    <div
+      class="project-resources-links-list"
+      id="projectResourcesUploadedLinksList"
+    >
+      
+    </div>
+    <div class="project-resources-modal-footer">
+      <button
+        class="project-resources-btn-cancel"
+        onclick="closeProjectResourcesLinkViewModal()"
+      >
+        Close
+      </button>
+    </div>
+  </div>
+</div> -->
+
+<!-- 
+<div id="projectResourcesLinkModal2" class="project-resources-modal model_pop_resource">
+  <div class="project-resources-modal-content">
+    <div class="project-resources-modal-header">
+      <h3>Upload link</h3>
+    </div>
+    <div
+      class="project-resources-links-container"
+      id="projectResourcesLinksInputContainer"
+    >
+      <div class="project-resources-link-row">
+        <input
+          type="text"
+          class="project-resources-link-name"
+          placeholder="Link name"
+        />
+        <input
+          type="url"
+          class="project-resources-link-url"
+          placeholder="https://example.com"
+        />
+        <button
+          class="project-resources-link-remove"
+          onclick="removeProjectResourcesLinkRow(this)"
+          style="display: none"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#dc2626"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="15" y1="9" x2="9" y2="15" />
+            <line x1="9" y1="9" x2="15" y2="15" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <button
+      class="project-resources-add-link-btn"
+      onclick="addProjectResourcesLinkRow()"
+    >
+      <svg
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+      >
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+      Add another Link
+    </button>
+    <div class="project-resources-modal-footer">
+      <button
+        class="project-resources-btn-cancel"
+        onclick="closeProjectResourcesLinkModal()"
+      >
+        Cancel
+      </button>
+      <button
+        class="project-resources-btn-upload"
+        onclick="uploadProjectResourcesLinks()"
+      >
+        Upload
+      </button>
+    </div>
+  </div>
+</div> -->
