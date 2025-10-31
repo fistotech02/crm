@@ -10,11 +10,13 @@ function initializeFirstLevelFollowup() {
   const form = document.getElementById("firstLevelForm");
   const tableBody = document.getElementById("first-levelTableBody");
   
-  // Filter elements
+  // Filter modal elements with NEW class names
   const filterBtn = document.getElementById("firstfilterBtn");
-  const filterDropdown = document.getElementById("firstLevelFilterDropdown");
+  const filterModal = document.getElementById("firstLevelFilterModal");
+  const filterModalCloseBtn = document.querySelector(".filter-modal-close-icon");
+  const filterTypeSelect = document.getElementById("firstLevelFilterTypeSelect");
+  const autocompleteList = document.getElementById("firstLevelAutocompleteList");
   const applyFilterBtn = document.getElementById("firstLevelApplyFilter");
-  const clearFilterBtn = document.getElementById("firstLevelClearFilter");
 
   // Check if required elements exist
   if (!modal) {
@@ -207,66 +209,326 @@ function initializeFirstLevelFollowup() {
   ];
 
   let editingIndex = -1;
-  let currentFilter = "All"; // Track current filter
+  let currentFilter = "All";
+  let selectedFilterType = "";
+  let selectedFilterValue = "";
+  let allFilterValues = [];
 
   // Initial render
   renderTable();
 
   // ========================================
-  // FILTER FUNCTIONALITY
+  // FILTER MODAL FUNCTIONALITY
   // ========================================
 
-  // Toggle filter dropdown
-  if (filterBtn && filterDropdown) {
+  // Open Filter Modal
+  if (filterBtn && filterModal) {
     filterBtn.addEventListener("click", function(e) {
+      e.preventDefault();
       e.stopPropagation();
-      filterDropdown.classList.toggle("active");
-      console.log("Filter button clicked, dropdown active:", filterDropdown.classList.contains("active"));
+      console.log('Filter modal button clicked');
+      filterModal.classList.add('active');
+      resetFilterModal();
     });
-  } else {
-    console.warn("Filter button or dropdown not found");
   }
 
-  // Close dropdown when clicking outside
-  document.addEventListener("click", function(e) {
-    if (filterDropdown && 
-        !filterDropdown.contains(e.target) && 
-        filterBtn && 
-        !filterBtn.contains(e.target)) {
-      filterDropdown.classList.remove("active");
+  // Close Filter Modal
+  if (filterModalCloseBtn) {
+    filterModalCloseBtn.addEventListener("click", closeFilterModal);
+  }
+
+  if (filterModal) {
+    filterModal.addEventListener("click", function(e) {
+      if (e.target === filterModal) {
+        closeFilterModal();
+      }
+    });
+  }
+
+  function closeFilterModal() {
+    if (filterModal) {
+      filterModal.classList.remove('active');
+      resetFilterModal();
     }
-  });
+  }
 
-  // Apply Filter
-  if (applyFilterBtn) {
-    applyFilterBtn.addEventListener("click", function() {
-      const selectedFilter = document.querySelector('input[name="firstLevelFilter"]:checked');
-      if (selectedFilter) {
-        currentFilter = selectedFilter.value;
-        renderTable();
-        if (filterDropdown) {
-          filterDropdown.classList.remove("active");
+  function resetFilterModal() {
+    if (filterTypeSelect) {
+      filterTypeSelect.value = '';
+    }
+    
+    // Hide and clear the search input
+    const searchGroup = document.getElementById('firstLevelSearchGroup');
+    const searchInput = document.getElementById('firstLevelSearchInput');
+    
+    if (searchGroup) {
+      searchGroup.style.display = 'none';
+    }
+    if (searchInput) {
+      searchInput.value = '';
+    }
+    if (autocompleteList) {
+      autocompleteList.innerHTML = '';
+      autocompleteList.classList.remove('active');
+    }
+    
+    selectedFilterType = '';
+    selectedFilterValue = '';
+    allFilterValues = [];
+  }
+
+  // Change input field based on dropdown selection
+  if (filterTypeSelect) {
+    filterTypeSelect.addEventListener('change', function() {
+      const selectedValue = this.value;
+      console.log('Selected filter type:', selectedValue);
+      
+      // Get elements
+      const searchGroup = document.getElementById('firstLevelSearchGroup');
+      const searchInput = document.getElementById('firstLevelSearchInput');
+      const searchLabel = document.getElementById('firstLevelSearchLabel');
+      
+      // Hide autocomplete
+      if (autocompleteList) {
+        autocompleteList.innerHTML = '';
+        autocompleteList.classList.remove('active');
+      }
+      
+      // Clear input
+      if (searchInput) {
+        searchInput.value = '';
+      }
+      
+      selectedFilterType = selectedValue;
+      selectedFilterValue = '';
+      
+      if (!selectedValue) {
+        if (searchGroup) {
+          searchGroup.style.display = 'none';
         }
-        console.log("Filter applied:", currentFilter);
+        allFilterValues = [];
+        return;
+      }
+      
+      // Update label based on selection
+      if (searchLabel) {
+        switch(selectedValue) {
+          case 'companyName':
+            searchLabel.textContent = 'Company Name';
+            break;
+          case 'phoneNumber':
+            searchLabel.textContent = 'Phone Number';
+            break;
+          case 'status':
+            searchLabel.textContent = 'Status';
+            break;
+        }
+      }
+      
+      // Get all values for this filter type
+      switch(selectedValue) {
+        case 'companyName':
+          allFilterValues = [...new Set(firstLevelCustomers.map(c => c.companyName))];
+          break;
+          
+        case 'phoneNumber':
+          allFilterValues = [...new Set(firstLevelCustomers.map(c => c.fullCustomerData.phoneNumber))];
+          break;
+          
+        case 'status':
+          allFilterValues = ['Not Picking', 'Not Interest', 'Not Reachable', 'Follow-Up Taken', 'None'];
+          break;
+      }
+      
+      // Show the search input
+      if (searchGroup) {
+        searchGroup.style.display = 'block';
+      }
+      
+      console.log('Available values:', allFilterValues);
+    });
+  }
+
+  // Search input autocomplete functionality
+  const searchInput = document.getElementById('firstLevelSearchInput');
+
+  if (searchInput && autocompleteList) {
+    // Input event - filter suggestions as user types
+    searchInput.addEventListener('input', function() {
+      const searchTerm = this.value.toLowerCase().trim();
+      
+      if (!searchTerm || allFilterValues.length === 0) {
+        autocompleteList.innerHTML = '';
+        autocompleteList.classList.remove('active');
+        selectedFilterValue = '';
+        return;
+      }
+      
+      // Filter values based on search term
+      const filteredValues = allFilterValues.filter(value => 
+        value.toLowerCase().includes(searchTerm)
+      );
+      
+      if (filteredValues.length === 0) {
+        autocompleteList.innerHTML = '<div class="filter-modal-no-results">No results found</div>';
+        autocompleteList.classList.add('active');
+        selectedFilterValue = '';
+        return;
+      }
+      
+      // Create autocomplete items with NEW class names
+      const itemsHTML = filteredValues.map(value => 
+        `<div class="filter-modal-suggestion-item" data-value="${value}">${value}</div>`
+      ).join('');
+      
+      autocompleteList.innerHTML = itemsHTML;
+      autocompleteList.classList.add('active');
+      
+      // Add click events to autocomplete items
+      const items = autocompleteList.querySelectorAll('.filter-modal-suggestion-item');
+      items.forEach(item => {
+        item.addEventListener('click', function() {
+          const value = this.getAttribute('data-value');
+          searchInput.value = value;
+          selectedFilterValue = value;
+          autocompleteList.innerHTML = '';
+          autocompleteList.classList.remove('active');
+          console.log('Selected value:', value);
+        });
+      });
+    });
+    
+    // Click outside to close autocomplete
+    document.addEventListener('click', function(e) {
+      if (!searchInput.contains(e.target) && !autocompleteList.contains(e.target)) {
+        autocompleteList.innerHTML = '';
+        autocompleteList.classList.remove('active');
       }
     });
   }
 
-  // Clear Filter
-  if (clearFilterBtn) {
-    clearFilterBtn.addEventListener("click", function() {
-      currentFilter = "All";
-      const allFilterRadio = document.querySelector('input[name="firstLevelFilter"][value="All"]');
-      if (allFilterRadio) {
-        allFilterRadio.checked = true;
+  // Apply Filter Button
+  if (applyFilterBtn) {
+    applyFilterBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const searchInput = document.getElementById('firstLevelSearchInput');
+      const followUpDateInput = document.getElementById('firstLevelFollowUpDateInput');
+      
+      if (!selectedFilterType) {
+        alert('Please select a filter type');
+        return;
       }
-      renderTable();
-      if (filterDropdown) {
-        filterDropdown.classList.remove("active");
+      
+      if (!searchInput || !searchInput.value.trim()) {
+        alert('Please enter a search value');
+        return;
       }
-      console.log("Filter cleared");
+      
+      // Set the filter value from input
+      selectedFilterValue = searchInput.value.trim();
+      
+      // Get the date if provided
+      const followUpDate = followUpDateInput ? followUpDateInput.value : '';
+      
+      // Apply filter
+      currentFilter = selectedFilterValue;
+      renderFilteredTable(followUpDate);
+      closeFilterModal();
+      
+      console.log(`Filtered by ${selectedFilterType}: ${selectedFilterValue}, Date: ${followUpDate}`);
     });
   }
+
+  // Render Filtered Table
+  function renderFilteredTable(followUpDate = '') {
+    if (!tableBody) return;
+
+    let filteredData = firstLevelCustomers;
+    
+    // Apply filter based on type
+    if (selectedFilterType && selectedFilterValue) {
+      filteredData = firstLevelCustomers.filter(record => {
+        let matches = false;
+        
+        switch(selectedFilterType) {
+          case 'companyName':
+            matches = record.companyName.toLowerCase() === selectedFilterValue.toLowerCase();
+            break;
+          case 'phoneNumber':
+            matches = record.fullCustomerData.phoneNumber === selectedFilterValue;
+            break;
+          case 'status':
+            matches = record.status === selectedFilterValue;
+            break;
+          default:
+            matches = true;
+        }
+        
+        // If date is provided, also filter by date
+        if (matches && followUpDate) {
+          matches = record.nextFollowupDate === followUpDate;
+        }
+        
+        return matches;
+      });
+    }
+
+    if (filteredData.length === 0) {
+      tableBody.innerHTML = `
+        <tr>
+          <td colspan="9" style="text-align: center; padding: 40px; color: #999">
+            No customers found matching your filter criteria.
+            <br><br>
+            <button onclick="clearFirstLevelFilter()" class="customer-btn-submit" style="padding: 10px 20px;">
+              Clear Filter
+            </button>
+          </td>
+        </tr>
+      `;
+      return;
+    }
+
+    tableBody.innerHTML = filteredData
+      .map((record) => {
+        const originalIndex = firstLevelCustomers.indexOf(record);
+        
+        return `
+          <tr>
+            <td>
+              <select class="first-level-status-select" data-index="${originalIndex}">
+                <option value="None" ${record.status === "None" ? "selected" : ""}>None</option>
+                <option value="Not Picking" ${record.status === "Not Picking" ? "selected" : ""}>Not Picking</option>
+                <option value="Not Interest" ${record.status === "Not Interest" ? "selected" : ""}>Not Interest</option>
+                <option value="Not Reachable" ${record.status === "Not Reachable" ? "selected" : ""}>Not Reachable</option>
+                <option value="Follow-Up Taken" ${record.status === "Follow-Up Taken" ? "selected" : ""}>Follow-Up Taken</option>
+              </select>
+            </td>
+            <td>${record.remarks || "-"}</td>
+            <td>${record.updateDate || "-"}</td>
+            <td>${record.nextFollowupDate || "-"}</td>
+            <td>${record.customerId}</td>
+            <td>${record.initiatedDate}</td>
+            <td>${record.companyName}</td>
+            <td>${record.customerName}</td>
+            <td>
+              <button class="first-level-view-btn" data-index="${originalIndex}">
+                <img src="../assets/imgaes/table_eye.webp" alt="View" />
+              </button>
+            </td>
+          </tr>
+        `;
+      })
+      .join("");
+  }
+
+  // Global function to clear filter
+  window.clearFirstLevelFilter = function() {
+    currentFilter = "All";
+    selectedFilterType = "";
+    selectedFilterValue = "";
+    renderTable();
+  };
 
   // ========================================
   // MODAL FUNCTIONALITY
@@ -475,7 +737,7 @@ function initializeFirstLevelFollowup() {
   }
 
   // ========================================
-  // RENDER TABLE WITH FILTER
+  // RENDER TABLE
   // ========================================
 
   function renderTable() {
@@ -501,32 +763,17 @@ function initializeFirstLevelFollowup() {
 
     tableBody.innerHTML = filteredData
       .map((record) => {
-        // Get original index for data binding
         const originalIndex = firstLevelCustomers.indexOf(record);
         
         return `
           <tr>
             <td>
               <select class="first-level-status-select" data-index="${originalIndex}">
-                <option value="None" ${
-                  record.status === "None" ? "selected" : ""
-                }>None</option>
-                <option value="Not Picking" ${
-                  record.status === "Not Picking" ? "selected" : ""
-                }>Not Picking</option>
-                <option value="Not Interest" ${
-                  record.status === "Not Interest" ? "selected" : ""
-                }>Not Interest</option>
-                <option value="Not Reachable" ${
-                  record.status === "Not Reachable"
-                    ? "selected"
-                    : ""
-                }>Not Reachable</option>
-                <option value="Follow-Up Taken" ${
-                  record.status === "Follow-Up Taken"
-                    ? "selected"
-                    : ""
-                }>Follow-Up Taken</option>
+                <option value="None" ${record.status === "None" ? "selected" : ""}>None</option>
+                <option value="Not Picking" ${record.status === "Not Picking" ? "selected" : ""}>Not Picking</option>
+                <option value="Not Interest" ${record.status === "Not Interest" ? "selected" : ""}>Not Interest</option>
+                <option value="Not Reachable" ${record.status === "Not Reachable" ? "selected" : ""}>Not Reachable</option>
+                <option value="Follow-Up Taken" ${record.status === "Follow-Up Taken" ? "selected" : ""}>Follow-Up Taken</option>
               </select>
             </td>
             <td>${record.remarks || "-"}</td>

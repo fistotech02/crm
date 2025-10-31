@@ -185,28 +185,31 @@ function initializePageScripts(pageName) {
       }, 100);
       break;
 
-    case "client":
-      setTimeout(() => {
-        if (typeof initializeClientDatabaseTabs === "function") {
-          initializeClientDatabaseTabs();
-        }
-        if (typeof initializeCustomerModal === "function") {
-          initializeCustomerModal();
-        }
-        if (typeof initializeFirstLevelFollowup === "function") {
-          initializeFirstLevelFollowup();
-        }
-        if (typeof initializeSecondLevelFollowup === "function") {
-          initializeSecondLevelFollowup();
-        }
-        if (typeof initializeMeetingDetails === "function") {
-          initializeMeetingDetails();
-        }
-        if (typeof initializeReportDetails === "function") {
-          initializeReportDetails();
-        }
-      }, 100);
-      break;
+case "client":
+  setTimeout(() => {
+    if (typeof initializeClientDatabaseTabs === "function") {
+      initializeClientDatabaseTabs();
+    }
+    if (typeof initializeCustomerModal === "function") {
+      initializeCustomerModal();
+    }
+    if (typeof initializeFilterModal === "function") {
+      initializeFilterModal();
+    }
+    if (typeof initializeFirstLevelFollowup === "function") {
+      initializeFirstLevelFollowup();
+    }
+    if (typeof initializeSecondLevelFollowup === "function") {
+      initializeSecondLevelFollowup();
+    }
+    if (typeof initializeMeetingDetails === "function") {
+      initializeMeetingDetails();
+    }
+    if (typeof initializeReportDetails === "function") {
+      initializeReportDetails();
+    }
+  }, 100);
+  break;
 
     case "projects":
       setTimeout(() => {

@@ -4,26 +4,33 @@
     gap: 1vw;
 }
 
-.customer-database-filter-btn{
+.customer-database-filter-btn {
     font-size: 1vw;
-    background-color: transparent;
+    background-color: #0052CC;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     font-family: 'Gilroy-Bold', sans-serif;
     margin-bottom: 1vw;
+    padding: 0.5vw 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5vw;
 }
 
-.customer-database-filter-btn img{
+.customer-database-filter-btn img {
     width: 100%;
     height: auto;
-    max-width: 2vw;
+    max-width: 1vw;
 }
 
 .customer-database-filter-btn:hover {
-    transform: scale(1.2);
+    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
 }
+
 
 .customer-database-add-btn {
     font-size: 1vw;
@@ -52,6 +59,123 @@
     vertical-align: middle;
 }
 
+
+/* Filter Modal Specific Styles */
+.filter-modal-content {
+    background-color: #fff;
+    margin: 2% auto;
+    width: 90%;
+    max-width: 35vw;
+    max-height: 90vh;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    animation: slideDown 0.3s ease;
+}
+
+.filter-modal-close {
+    color: #000000;
+    font-size: 32px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    line-height: 1;
+}
+
+.filter-input-container {
+    margin-top: 20px;
+    min-height: 80px;
+}
+
+.filter-input-container .customer-form-group {
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Autocomplete for Customer Database Filter */
+.customer-autocomplete-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -1px;
+}
+
+.customer-autocomplete-list.active {
+    display: block;
+}
+
+.customer-autocomplete-item {
+    padding: 14px 16px;
+    cursor: pointer;
+    border-bottom: 1px solid #f3f4f6;
+    transition: background 0.2s ease;
+    font-family: 'Gilroy-Regular', sans-serif;
+    font-size: 0.95rem;
+    color: #333;
+}
+
+.customer-autocomplete-item:hover {
+    background: #f3f4f6;
+}
+
+.customer-autocomplete-item.selected {
+    background: #e0f2fe;
+    color: #0052CC;
+    font-weight: 500;
+}
+
+.customer-autocomplete-item:last-child {
+    border-bottom: none;
+}
+
+.customer-autocomplete-no-results {
+    padding: 14px 16px;
+    text-align: center;
+    color: #999;
+    font-size: 0.9rem;
+    font-family: 'Gilroy-Regular', sans-serif;
+}
+
+/* Custom scrollbar for autocomplete */
+.customer-autocomplete-list::-webkit-scrollbar {
+    width: 6px;
+}
+
+.customer-autocomplete-list::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 0 0 8px 0;
+}
+
+.customer-autocomplete-list::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.customer-autocomplete-list::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
 
 
 /* TABLE  css*/
@@ -403,14 +527,15 @@
 /* Customer Submit Button */
 .customer-btn-submit {
     padding: 12px 40px;
-    background: linear-gradient(to bottom, #0052CC 10%, #002966 100%);
+    background: #0052CC;
     color: white;
     border: none;
-    border-radius: 6px;
+    border-radius: 20px;
     font-size: 1vw;
     font-family: 'Gilroy-Bold', sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
+    float: inline-end;
 }
 
 .customer-btn-submit:hover {
@@ -506,6 +631,22 @@
         margin-right: 0.5rem;
     }
 
+    .customer-database-filter-btn {
+        font-size: 1rem;
+        padding: 0.75rem 1.5rem;
+        margin-bottom: 1.5rem;
+        gap: 0.5rem;
+        border-radius: 6px;
+    }
+
+    .customer-database-filter-btn img {
+        max-width: 1.25rem;
+    }
+
+    .filter-modal-content {
+        max-width: 50vw;
+    }
+
     .customer-database-table {
         min-width: 900px;
     }
@@ -563,7 +704,8 @@
         width: 18px;
         height: 18px;
     }
-        .customer-btn-add-contact {
+
+    .customer-btn-add-contact {
         padding: 0.625rem 0.75rem;
         margin-bottom: 0.875rem;
         font-size: 0.8125rem;
@@ -591,6 +733,22 @@
     .customer-database-add-btn img {
         max-width: 1rem;
         margin-right: 0.375rem;
+    }
+
+    .customer-database-filter-btn {
+        font-size: 0.875rem;
+        padding: 0.625rem 1.25rem;
+        margin-bottom: 1rem;
+        gap: 0.375rem;
+        border-radius: 5px;
+    }
+
+    .customer-database-filter-btn img {
+        max-width: 1rem;
+    }
+
+    .filter-modal-content {
+        max-width: 85vw;
     }
 
     .customer-database-table-container {
@@ -686,7 +844,8 @@
         width: 16px;
         height: 16px;
     }
-        .customer-btn-add-contact {
+
+    .customer-btn-add-contact {
         padding: 0.5rem 0.625rem;
         margin-bottom: 0.75rem;
         font-size: 0.75rem;
@@ -714,6 +873,22 @@
     .customer-database-add-btn img {
         max-width: 0.875rem;
         margin-right: 0.25rem;
+    }
+
+    .customer-database-filter-btn {
+        font-size: 0.8125rem;
+        padding: 0.5rem 1rem;
+        margin-bottom: 0.875rem;
+        gap: 0.25rem;
+        border-radius: 5px;
+    }
+
+    .customer-database-filter-btn img {
+        max-width: 0.875rem;
+    }
+
+    .filter-modal-content {
+        max-width: 95vw;
     }
 
     .customer-database-table thead th {
@@ -763,7 +938,8 @@
         width: 14px;
         height: 14px;
     }
-        .customer-btn-add-contact {
+
+    .customer-btn-add-contact {
         padding: 0.5rem;
         margin-bottom: 0.625rem;
         font-size: 0.6875rem;
@@ -780,6 +956,7 @@
     }
 
     .customer-contact-delete-btn:hover {
-        transform: scale(1.05); /* Reduced scale for mobile */
+        transform: scale(1.05);
+        /* Reduced scale for mobile */
     }
 }
